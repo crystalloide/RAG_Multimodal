@@ -1,0 +1,1183 @@
+﻿{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745770013414_1157641506",
+      "id": "paragraph_1745770013414_1157641506",
+      "dateCreated": "2025-04-27T16:06:53+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:518",
+      "text": "%md\r\n\r\n### Prédiction de Clics sur des Publicités: Analyse de Données et Régression Logistique :\r\n\r\nCe notebook reproduit l'analyse de données et la prédiction de clics sur des publicités présentées dans la vidéo de Smart Data Camp. Nous allons créer un modèle de régression logistique qui prédit si un utilisateur cliquera sur une publicité en fonction de ses caractéristiques.\r\n\r\n#### Problématique :\r\n\r\nDans ce projet, nous allons travailler sur un ensemble de données indiquant si un internaute a cliqué sur une publicité. \r\nNous tenterons de créer un modèle qui prédira si un utilisateur cliquera ou non sur une publicité en fonction de ses caractéristiques.\r\n\r\n#### Description des Données\r\nNotre jeu de données contient les colonnes suivantes:\r\n\r\n- Daily Time Spent on Site: Temps passé par le consommateur sur le site (en minutes)\r\n\r\n- Age: Âge du client (en années)\r\n\r\n- Area Income: Revenu moyen de la zone géographique du consommateur\r\n\r\n- Daily Internet Usage: Nombre moyen de minutes par jour passées sur internet\r\n\r\n- Ad Topic Line: Titre de la publicité\r\n\r\n- City: Ville du consommateur\r\n\r\n- Male: Indique si le consommateur est un homme\r\n\r\n- Country: Pays du consommateur\r\n\r\n- Timestamp: Moment où le consommateur a cliqué sur la publicité ou fermé la fenêtre\r\n\r\n- Clicked on Ad: Variable cible indiquant si l'utilisateur a cliqué sur la publicité (0 ou 1)",
+      "dateUpdated": "2025-04-27T16:09:17+0000",
+      "dateFinished": "2025-04-27T16:09:17+0000",
+      "dateStarted": "2025-04-27T16:09:17+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h3>Prédiction de Clics sur des Publicités: Analyse de Données et Régression Logistique :</h3>\n<p>Ce notebook reproduit l&rsquo;analyse de données et la prédiction de clics sur des publicités présentées dans la vidéo de Smart Data Camp. Nous allons créer un modèle de régression logistique qui prédit si un utilisateur cliquera sur une publicité en fonction de ses caractéristiques.</p>\n<h4>Problématique :</h4>\n<p>Dans ce projet, nous allons travailler sur un ensemble de données indiquant si un internaute a cliqué sur une publicité.<br />\nNous tenterons de créer un modèle qui prédira si un utilisateur cliquera ou non sur une publicité en fonction de ses caractéristiques.</p>\n<h4>Description des Données</h4>\n<p>Notre jeu de données contient les colonnes suivantes:</p>\n<ul>\n<li>\n<p>Daily Time Spent on Site: Temps passé par le consommateur sur le site (en minutes)</p>\n</li>\n<li>\n<p>Age: Âge du client (en années)</p>\n</li>\n<li>\n<p>Area Income: Revenu moyen de la zone géographique du consommateur</p>\n</li>\n<li>\n<p>Daily Internet Usage: Nombre moyen de minutes par jour passées sur internet</p>\n</li>\n<li>\n<p>Ad Topic Line: Titre de la publicité</p>\n</li>\n<li>\n<p>City: Ville du consommateur</p>\n</li>\n<li>\n<p>Male: Indique si le consommateur est un homme</p>\n</li>\n<li>\n<p>Country: Pays du consommateur</p>\n</li>\n<li>\n<p>Timestamp: Moment où le consommateur a cliqué sur la publicité ou fermé la fenêtre</p>\n</li>\n<li>\n<p>Clicked on Ad: Variable cible indiquant si l&rsquo;utilisateur a cliqué sur la publicité (0 ou 1)</p>\n</li>\n</ul>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### 1. Chargement des Données (le fichier \"advertisement.csv\" aura été préalablement déposé sous /user/share/advertisement.csv)\n##### Voir ici ci-besoin : https://github.com/crystalloide/Big_Data/blob/master/advertisement.csv  ",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:46:07+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745770162487_1289364100",
+      "id": "paragraph_1745770162487_1289364100",
+      "dateCreated": "2025-04-27T16:09:22+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:863",
+      "dateFinished": "2025-04-27T16:46:07+0000",
+      "dateStarted": "2025-04-27T16:46:07+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>1. Chargement des Données (le fichier &ldquo;advertisement.csv&rdquo; aura été préalablement déposé sous /user/share/advertisement.csv)</h4>\n<h5>Voir ici ci-besoin : <a href=\"https://github.com/crystalloide/Big_Data/blob/master/advertisement.csv\">https://github.com/crystalloide/Big_Data/blob/master/advertisement.csv</a></h5>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=0",
+              "$$hashKey": "object:1432"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=1",
+              "$$hashKey": "object:1433"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=2",
+              "$$hashKey": "object:1434"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=3",
+              "$$hashKey": "object:1435"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=4",
+              "$$hashKey": "object:1436"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=5",
+              "$$hashKey": "object:1437"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=6",
+              "$$hashKey": "object:1438"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745769171539_1869460405",
+      "id": "paragraph_1745769171539_1869460405",
+      "dateCreated": "2025-04-27T15:52:51+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:304",
+      "text": "%spark\r\n// Chargement du fichier CSV\r\nval csv = spark.read.option(\"header\", \"true\").option(\"inferSchema\", \"true\").csv(\"/user/share/advertisement.csv\")\r\n\r\n// Affichage des 10 premières lignes\r\ncsv.show(10)\r\n\r\n// Affichage du schéma (structure des données)\r\ncsv.printSchema()\r\n\r\n// Statistiques descriptives sur toutes les colonnes\r\ncsv.describe().show()\r\n\r\n\r\n// Statistiques sur certaines colonnes spécifiques\r\ncsv.select(\"Age\", \"Daily Time Spent on Site\", \"Area Income\", \"Daily Internet Usage\").describe().show(false)",
+      "dateUpdated": "2025-04-27T16:14:03+0000",
+      "dateFinished": "2025-04-27T16:14:17+0000",
+      "dateStarted": "2025-04-27T16:14:03+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\n|Daily Time Spent on Site|Age|       Area Income|Daily Internet Usage|       Ad Topic Line|           City|Male|             Country|           Timestamp|Clicked on Ad|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\n|       74.93428306022466| 28| 60224.29371500228|   60.77712129758373|Discover Enterpri...|     Dylanmouth|   1|         Saint Lucia|2024-10-12 10:01:...|            1|\n|       62.23471397657631| 31|59249.853888034995|   97.80057412252512|Discover Persiste...|    Allisonfurt|   0|             Vanuatu|2024-05-27 06:05:...|            1|\n|       77.95377076201385| 29| 40952.20231291763|  116.51886374829655|Discover Up-sized...|   Elliotthaven|   1|            Slovenia|2024-10-27 07:03:...|            1|\n|       95.46059712816052| 36| 63693.76332645607|  145.98675643698766|Discover Profit-f...|  New Erinburgh|   0|           Gibraltar|2024-10-07 10:30:...|            1|\n|       60.31693250553328| 46|32648.759866350727|  180.96649306427514|Discover Phased c...|    Robertsview|   0|              Angola|2024-12-24 17:56:...|            1|\n|      60.317260861016386| 27|45187.235113595074|  167.76543773487057|Discover User-cen...|Port Shellyfort|   1|French Southern T...|2025-01-13 17:50:...|            1|\n|       96.58425631014782| 45|25013.682806532885|   92.82700806210059|Discover Front-li...|    Jenkinsview|   0|             Myanmar|2024-09-20 13:28:...|            1|\n|       80.34869458305818| 27| 78379.39775444222|   125.1315095133739|Discover Re-conte...|  Robinsonhaven|   0|                Chad|2024-12-15 19:15:...|            1|\n|      55.610512281300956| 26| 51526.75759082057|  143.05502354810267|Discover Cloned s...|        Amyside|   1|               Congo|2024-11-18 15:19:...|            1|\n|        75.8512008717193| 43| 87503.26052224467|  129.51171502214004|Discover Digitize...|  Marcuschester|   0|             Bermuda|2024-12-05 17:17:...|            1|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\nonly showing top 10 rows\n\nroot\n |-- Daily Time Spent on Site: double (nullable = true)\n |-- Age: integer (nullable = true)\n |-- Area Income: double (nullable = true)\n |-- Daily Internet Usage: double (nullable = true)\n |-- Ad Topic Line: string (nullable = true)\n |-- City: string (nullable = true)\n |-- Male: integer (nullable = true)\n |-- Country: string (nullable = true)\n |-- Timestamp: string (nullable = true)\n |-- Clicked on Ad: integer (nullable = true)\n\n+-------+------------------------+----------------+-----------------+--------------------+--------------------+-----------+------------------+-----------+--------------------+-------------------+\n|summary|Daily Time Spent on Site|             Age|      Area Income|Daily Internet Usage|       Ad Topic Line|       City|              Male|    Country|           Timestamp|      Clicked on Ad|\n+-------+------------------------+----------------+-----------------+--------------------+--------------------+-----------+------------------+-----------+--------------------+-------------------+\n|  count|                   10000|           10000|            10000|               10000|               10000|      10000|             10000|      10000|               10000|              10000|\n|   mean|       65.04762687474678|         34.8401|54851.05382914839|  139.89028062408497|                null|       null|            0.5023|       null|                null|              0.998|\n| stddev|      19.835021476253228|9.55221735910818| 14744.0158706273|   39.67710582844236|                null|       null|0.5000197115826509|       null|                null|0.04467884980571911|\n|    min|                    20.0|              18|          20000.0|                50.0|Discover Adaptive...| Aaronburgh|                 0|Afghanistan|2024-04-27 11:08:...|                  0|\n|    max|      143.52475412872653|              65|         100000.0|  289.11333379052746|Discover Visionar...|Zunigaburgh|                 1|   Zimbabwe|2025-04-27 15:32:...|                  1|\n+-------+------------------------+----------------+-----------------+--------------------+--------------------+-----------+------------------+-----------+--------------------+-------------------+\n\n+-------+----------------+------------------------+-----------------+--------------------+\n|summary|Age             |Daily Time Spent on Site|Area Income      |Daily Internet Usage|\n+-------+----------------+------------------------+-----------------+--------------------+\n|count  |10000           |10000                   |10000            |10000               |\n|mean   |34.8401         |65.04762687474678       |54851.05382914839|139.89028062408497  |\n|stddev |9.55221735910818|19.835021476253228      |14744.0158706273 |39.67710582844236   |\n|min    |18              |20.0                    |20000.0          |50.0                |\n|max    |65              |143.52475412872653      |100000.0         |289.11333379052746  |\n+-------+----------------+------------------------+-----------------+--------------------+\n\n\u001b[1m\u001b[34mcsv\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [Daily Time Spent on Site: double, Age: int ... 8 more fields]\n"
+          }
+        ]
+      }
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745770211114_92336606",
+      "id": "paragraph_1745770211114_92336606",
+      "dateCreated": "2025-04-27T16:10:11+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:984",
+      "text": "%md\n#### 2. Visualisation des Données",
+      "dateUpdated": "2025-04-27T16:35:06+0000",
+      "dateFinished": "2025-04-27T16:20:14+0000",
+      "dateStarted": "2025-04-27T16:20:14+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>2. Visualisation des Données</h4>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\r\n// Création d'une vue temporaire pour effectuer des requêtes SQL\r\ncsv.createOrReplaceTempView(\"ads_data\")\r\n\r\n// Requête SQL simple pour vérifier les données\r\nspark.sql(\"SELECT * FROM ads_data LIMIT 10\").show()\r\n\r\n// Visualisation du nombre d'âge différent :\r\nval ageDataDiff = spark.sql(\"SELECT COUNT(DISTINCT Age) AS DistinctAgeCount FROM ads_data\")\r\n\r\nageDataDiff.show()",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:30:40+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "DistinctAgeCount": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "DistinctAgeCount",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=42",
+              "$$hashKey": "object:5181"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=43",
+              "$$hashKey": "object:5182"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=44",
+              "$$hashKey": "object:5183"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=45",
+              "$$hashKey": "object:5184"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=46",
+              "$$hashKey": "object:5185"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745770814088_1498858389",
+      "id": "paragraph_1745770814088_1498858389",
+      "dateCreated": "2025-04-27T16:20:14+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1485",
+      "dateFinished": "2025-04-27T16:30:41+0000",
+      "dateStarted": "2025-04-27T16:30:40+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\n|Daily Time Spent on Site|Age|       Area Income|Daily Internet Usage|       Ad Topic Line|           City|Male|             Country|           Timestamp|Clicked on Ad|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\n|       74.93428306022466| 28| 60224.29371500228|   60.77712129758373|Discover Enterpri...|     Dylanmouth|   1|         Saint Lucia|2024-10-12 10:01:...|            1|\n|       62.23471397657631| 31|59249.853888034995|   97.80057412252512|Discover Persiste...|    Allisonfurt|   0|             Vanuatu|2024-05-27 06:05:...|            1|\n|       77.95377076201385| 29| 40952.20231291763|  116.51886374829655|Discover Up-sized...|   Elliotthaven|   1|            Slovenia|2024-10-27 07:03:...|            1|\n|       95.46059712816052| 36| 63693.76332645607|  145.98675643698766|Discover Profit-f...|  New Erinburgh|   0|           Gibraltar|2024-10-07 10:30:...|            1|\n|       60.31693250553328| 46|32648.759866350727|  180.96649306427514|Discover Phased c...|    Robertsview|   0|              Angola|2024-12-24 17:56:...|            1|\n|      60.317260861016386| 27|45187.235113595074|  167.76543773487057|Discover User-cen...|Port Shellyfort|   1|French Southern T...|2025-01-13 17:50:...|            1|\n|       96.58425631014782| 45|25013.682806532885|   92.82700806210059|Discover Front-li...|    Jenkinsview|   0|             Myanmar|2024-09-20 13:28:...|            1|\n|       80.34869458305818| 27| 78379.39775444222|   125.1315095133739|Discover Re-conte...|  Robinsonhaven|   0|                Chad|2024-12-15 19:15:...|            1|\n|      55.610512281300956| 26| 51526.75759082057|  143.05502354810267|Discover Cloned s...|        Amyside|   1|               Congo|2024-11-18 15:19:...|            1|\n|        75.8512008717193| 43| 87503.26052224467|  129.51171502214004|Discover Digitize...|  Marcuschester|   0|             Bermuda|2024-12-05 17:17:...|            1|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+\n\n+----------------+\n|DistinctAgeCount|\n+----------------+\n|              48|\n+----------------+\n\n\u001b[1m\u001b[34mageDataDiff\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [DistinctAgeCount: bigint]\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\n\nval ageData = spark.sql(\"SELECT Age FROM ads_data\") // Histogramme des âges\n\nageData.show()\nz.show(ageData) // Pour les visualisations avancées\n\n// Graphique de dispersion âge/revenu\nval incomeByAge = spark.sql(\"SELECT `Age`, `Area Income` FROM ads_data\")\nz.show(incomeByAge)\n\n// Graphique âge/temps passé sur le site\nval timeByAge = spark.sql(\"SELECT Age, `Daily Time Spent on Site` FROM ads_data\")\nz.show(timeByAge)",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:34:17+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "Age0",
+                        "visible": true,
+                        "width": 1403,
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1,
+                      "paginationPageSize": 250
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Age": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Age",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          },
+          "5": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Age": "string",
+                      "Daily Time Spent on Site": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=49",
+              "$$hashKey": "object:8540"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=50",
+              "$$hashKey": "object:8541"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=51",
+              "$$hashKey": "object:8542"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=52",
+              "$$hashKey": "object:8543"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745770862369_431038347",
+      "id": "paragraph_1745770862369_431038347",
+      "dateCreated": "2025-04-27T16:21:02+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1575",
+      "dateFinished": "2025-04-27T16:33:33+0000",
+      "dateStarted": "2025-04-27T16:33:32+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n|Age|\n+---+\n| 28|\n| 31|\n| 29|\n| 36|\n| 46|\n| 27|\n| 45|\n| 27|\n| 26|\n| 43|\n| 44|\n| 43|\n| 21|\n| 30|\n| 43|\n| 35|\n| 24|\n| 39|\n| 27|\n| 52|\n+---+\nonly showing top 20 rows\n\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "Age\n28\n31\n29\n36\n46\n27\n45\n27\n26\n43\n44\n43\n21\n30\n43\n35\n24\n39\n27\n52\n50\n41\n48\n35\n42\n49\n37\n32\n18\n34\n43\n44\n40\n29\n18\n30\n31\n31\n41\n54\n36\n32\n32\n36\n26\n36\n39\n37\n39\n39\n18\n41\n28\n24\n23\n39\n32\n18\n39\n20\n36\n37\n43\n52\n21\n34\n32\n39\n37\n31\n30\n23\n44\n39\n44\n31\n28\n24\n38\n24\n53\n21\n37\n50\n40\n36\n25\n21\n42\n50\n30\n23\n18\n25\n33\n50\n41\n38\n30\n29\n49\n37\n18\n28\n26\n29\n40\n33\n34\n48\n28\n53\n28\n35\n32\n36\n39\n39\n27\n23\n60\n30\n41\n18\n32\n33\n39\n18\n36\n23\n38\n24\n26\n32\n24\n30\n23\n18\n45\n22\n33\n42\n28\n26\n37\n46\n23\n33\n18\n31\n35\n26\n30\n20\n35\n45\n24\n28\n40\n47\n20\n33\n37\n33\n18\n40\n50\n36\n24\n29\n52\n44\n41\n38\n28\n32\n34\n40\n50\n46\n20\n37\n42\n41\n28\n64\n22\n24\n37\n56\n26\n32\n45\n34\n31\n40\n37\n45\n47\n38\n37\n37\n39\n35\n34\n46\n50\n19\n35\n28\n31\n39\n41\n33\n18\n25\n43\n18\n46\n40\n48\n33\n18\n39\n47\n44\n28\n35\n29\n26\n44\n23\n26\n23\n20\n36\n46\n33\n19\n43\n51\n28\n30\n40\n51\n29\n21\n41\n42\n35\n29\n44\n40\n27\n35\n21\n41\n32\n30\n34\n35\n43\n40\n33\n42\n39\n30\n33\n33\n40\n31\n31\n54\n44\n27\n40\n36\n38\n36\n46\n38\n34\n45\n37\n36\n38\n34\n35\n29\n27\n25\n21\n26\n33\n36\n32\n18\n50\n45\n39\n54\n25\n53\n25\n37\n22\n35\n38\n33\n42\n35\n29\n29\n43\n28\n44\n47\n18\n46\n55\n37\n40\n45\n32\n36\n21\n36\n39\n40\n45\n27\n29\n53\n33\n37\n34\n26\n51\n29\n23\n30\n18\n28\n25\n41\n28\n43\n48\n42\n32\n36\n19\n33\n26\n41\n60\n39\n18\n31\n36\n35\n27\n37\n22\n25\n41\n24\n40\n21\n52\n27\n32\n38\n29\n36\n40\n44\n42\n33\n33\n58\n44\n25\n35\n31\n33\n22\n30\n53\n40\n18\n47\n45\n31\n42\n26\n30\n49\n32\n18\n34\n34\n46\n35\n30\n45\n36\n27\n46\n36\n35\n36\n24\n29\n35\n33\n47\n37\n43\n35\n45\n38\n35\n34\n25\n40\n34\n29\n46\n22\n30\n45\n38\n34\n37\n36\n19\n31\n51\n28\n31\n29\n34\n29\n39\n36\n42\n24\n31\n32\n39\n27\n44\n46\n25\n30\n29\n61\n30\n51\n22\n25\n28\n26\n32\n27\n26\n46\n47\n44\n40\n35\n30\n25\n38\n23\n25\n46\n54\n38\n46\n32\n21\n41\n40\n35\n32\n44\n25\n27\n24\n35\n24\n28\n27\n32\n20\n35\n47\n36\n50\n48\n42\n35\n35\n42\n31\n18\n39\n23\n25\n35\n34\n20\n36\n44\n23\n47\n19\n56\n30\n36\n18\n34\n37\n34\n29\n25\n46\n35\n50\n29\n30\n43\n18\n22\n45\n23\n18\n53\n21\n36\n35\n18\n32\n39\n38\n44\n31\n42\n28\n20\n22\n20\n45\n19\n37\n32\n33\n48\n30\n41\n35\n33\n57\n20\n47\n41\n30\n51\n18\n29\n22\n39\n23\n39\n33\n30\n38\n32\n24\n63\n30\n18\n26\n22\n43\n38\n38\n31\n32\n31\n34\n43\n38\n40\n39\n43\n37\n38\n46\n28\n26\n23\n36\n18\n39\n33\n46\n28\n32\n46\n48\n28\n36\n37\n38\n32\n47\n18\n30\n39\n39\n48\n46\n32\n47\n27\n44\n53\n47\n36\n31\n19\n38\n23\n27\n23\n30\n34\n37\n28\n45\n32\n27\n37\n54\n38\n31\n19\n32\n37\n31\n18\n26\n49\n49\n26\n41\n23\n49\n37\n44\n18\n41\n34\n43\n44\n35\n28\n42\n34\n26\n25\n20\n29\n46\n36\n29\n43\n26\n35\n33\n42\n19\n26\n18\n32\n47\n29\n29\n43\n45\n34\n41\n24\n48\n56\n40\n18\n29\n41\n30\n47\n40\n27\n35\n26\n33\n29\n46\n56\n20\n18\n32\n19\n35\n42\n49\n37\n33\n18\n35\n35\n41\n27\n30\n20\n18\n23\n19\n38\n29\n29\n25\n18\n50\n24\n30\n20\n44\n36\n26\n31\n51\n34\n33\n25\n18\n33\n38\n45\n18\n23\n29\n34\n33\n33\n39\n25\n44\n39\n31\n51\n50\n44\n18\n50\n42\n55\n47\n50\n43\n48\n54\n37\n19\n31\n38\n35\n22\n18\n27\n43\n50\n44\n45\n34\n18\n30\n32\n30\n35\n39\n43\n32\n18\n30\n35\n47\n29\n40\n37\n35\n44\n28\n29\n34\n28\n40\n27\n37\n33\n37\n30\n31\n35\n37\n34\n52\n25\n34\n19\n38\n23\n32\n31\n37\n29\n29\n49\n37\n29\n32\n51\n32\n28\n28\n29\n29\n22\n23\n26\n40\n31\n32\n47\n47\n32\n28\n26\n41\n32\n31\n26\n27\n38\n21\n44\n29\n33\n21\n34\n31\n34\n49\n36\n27\n27\n40\n47\n37\n41\n41\n49\n18\n41\n44\n21\n26\n26\n27\n30\n37\n43\n45\n26\n26\n48\n41\n35\n39\n34\n40\n31\n37\n19\n28\n28\n31\n25\n29\n19\n40\n34\n18\n26\n38\n29\n28\n34\n38\n20\n40\n26\n34\n34\n29\n24\n32\n51\n21\n51\n32\n35\n24\n27\n29\n24\n32\n30\n53\n23\n36\n37\n24\n41\n31\n18\n41\n23\n24\n41\n31\n44\n47\n28\n42\n27\n57\n28\n45\n43\n38\n28\n33\n18\n37\n38\n36\n18\n22\n27\n37\n37\n33\n41\n24\n41\n39\n38\n33\n53\n39\n25\n37\n42\n29\n45\n38\n18\n37\n30\n40\n44\n36\n51\n33\n41\n43\n34\n42\n29\n30\n21\n37\n38\n46\n42\n32\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "Age\tArea Income\n28\t60224.29371500228\n31\t59249.853888034995\n29\t40952.20231291763\n36\t63693.76332645607\n46\t32648.759866350727\n27\t45187.235113595074\n45\t25013.682806532885\n27\t78379.39775444222\n26\t51526.75759082057\n43\t87503.26052224467\n44\t67044.24889779242\n43\t61721.47320026537\n21\t46206.58458578501\n30\t39304.7494646887\n43\t62844.57360845418\n35\t53927.289860905265\n24\t34910.94526772048\n39\t32247.12375237522\n27\t40619.44406284625\n52\t82314.50837899346\n50\t88199.16877016956\n41\t58074.837209633646\n48\t57234.141943619325\n35\t49955.194422557186\n42\t40982.719775357466\n49\t75627.68586410866\n37\t83103.64590845704\n32\t41598.71371241072\n18\t53757.42432363098\n34\t48252.00548934748\n43\t48696.41387702534\n44\t72788.62383144793\n40\t35320.57681950818\n29\t61997.04536404459\n18\t65923.57160958799\n30\t52867.732395972715\n31\t68396.01740480159\n31\t57214.777608061755\n41\t73256.94881734168\n54\t32166.92042611219\n36\t49768.371084896964\n32\t53922.80285723448\n32\t20000.0\n36\t38710.70899632198\n26\t42796.011184618204\n36\t69223.08992235025\n39\t44397.349805280995\n37\t42728.81519041034\n39\t67262.28670984288\n39\t30731.340313149183\n18\t23931.33898834642\n41\t49576.1154989598\n28\t33284.398478824674\n24\t33854.810580105266\n23\t63601.50687531973\n39\t68139.60756868869\n32\t66832.96323778188\n18\t71631.6499046085\n39\t73617.01480022202\n20\t23071.14686759604\n36\t61756.179398942\n37\t47055.87700645662\n43\t43788.636310143454\n52\t63406.21948313058\n21\t29045.567801563724\n34\t28733.3709119152\n32\t64503.591161225755\n39\t62316.79026266347\n37\t57050.98983807265\n31\t41801.298929152945\n30\t66157.44451873186\n23\t65204.54338090714\n44\t56279.567725711815\n39\t37340.18438095343\n44\t48621.2748140574\n31\t67567.50516286664\n28\t74907.8683420268\n24\t50101.95094935507\n38\t51254.90548287606\n24\t52574.663379624086\n53\t59123.395133664584\n21\t46283.990499099644\n37\t20000.0\n50\t72891.53502470645\n40\t81920.33420743824\n36\t45814.00210591431\n25\t39000.199466218386\n21\t52943.492164146664\n42\t52187.441744068405\n50\t69932.77865744439\n30\t55819.591624675566\n23\t43110.65754443225\n18\t35223.85824162926\n25\t67984.5127722951\n33\t63992.66861746374\n50\t70908.39817137728\n41\t40477.198739183594\n38\t82576.55349292494\n30\t28844.582394141446\n29\t65644.01532102219\n49\t26356.258492046476\n37\t43145.02927452298\n18\t78415.34395671939\n28\t67470.46381713984\n26\t46806.69376769227\n29\t47217.44435767468\n40\t56509.33166253163\n33\t62712.11486141084\n34\t73773.69074024045\n48\t48156.48993087258\n28\t30823.224047691976\n53\t57354.5294057314\n28\t48138.53743737408\n35\t35490.494428773294\n32\t59465.03372969192\n36\t51803.29368860816\n39\t59597.68309704692\n39\t41583.336997192295\n27\t62300.65795488248\n23\t35243.52704867533\n60\t42584.02915455125\n30\t51356.286533690836\n41\t81127.27622439571\n18\t66772.38052822741\n32\t71157.88756401684\n33\t76256.15550014717\n39\t100000.0\n18\t55623.83601337651\n36\t76306.01384694784\n23\t70189.52881602911\n38\t69940.48754961288\n24\t81613.59427060271\n26\t48710.304535232855\n32\t47519.72464095431\n24\t59796.48270222792\n30\t52259.50342117169\n23\t59777.512794972594\n18\t78441.23177579517\n45\t47827.799159405826\n22\t50429.815561094045\n33\t57614.66505289866\n42\t51575.22360962246\n28\t26289.912579797692\n26\t46298.085359515906\n37\t65310.598633562564\n46\t76563.2012639897\n23\t37680.7214869341\n33\t37610.76401153735\n18\t55453.507040760036\n31\t23866.074026832448\n35\t48325.44695519309\n26\t28959.369106729097\n30\t75535.91949763698\n20\t43460.032684743936\n35\t79792.51279508541\n45\t71702.8203018751\n24\t45305.24053453875\n28\t38920.60544730884\n40\t52096.81376248617\n47\t53430.30063612695\n20\t60192.20415928602\n33\t43351.85065704732\n37\t66195.92310283304\n33\t58979.920824998495\n18\t49894.07264926204\n40\t44319.39016872965\n50\t52226.72525351971\n36\t42746.48122258646\n24\t55876.580423253814\n29\t56281.58027829864\n52\t58925.60925214509\n44\t81493.6361450778\n41\t53013.329204506415\n38\t70068.96800686723\n28\t58443.810954635526\n32\t51426.33547152319\n34\t53212.61095073149\n40\t54117.60386247925\n50\t59196.51561592324\n46\t40610.18852171545\n20\t33019.894248325494\n37\t64814.46090211413\n42\t68471.85748871889\n41\t66184.53749204204\n28\t57324.580278347086\n64\t66508.36941179933\n22\t65701.43539025713\n24\t66814.44038432432\n37\t42106.8876798683\n56\t38545.72304268053\n26\t49171.46129871594\n32\t54739.238356860165\n45\t51371.18309301566\n34\t26849.645029931868\n31\t80825.38918202714\n40\t50889.31016671397\n37\t57590.5662486543\n45\t73668.23486144588\n47\t20000.0\n38\t47324.59192132432\n37\t49193.24089630293\n37\t49955.34931824033\n39\t52397.70113929071\n35\t76707.02197667267\n34\t65101.88313590834\n46\t69370.52902943244\n50\t55706.804077163855\n19\t34009.40430781749\n35\t23804.544472809896\n28\t32058.884151525534\n31\t60396.48556249029\n39\t55476.545690464525\n41\t51847.545286659886\n33\t49471.34639889795\n18\t85175.82363164121\n25\t42656.44613535288\n43\t68917.29184174088\n18\t55028.694040314906\n46\t54085.90732321005\n40\t72649.56322925116\n48\t76937.95574037166\n33\t51406.75814672743\n18\t66988.04078863213\n39\t60458.370432250806\n47\t55111.55708214872\n44\t58063.82413985539\n28\t44679.86777732744\n35\t50408.50910003373\n29\t46290.4708037094\n26\t68520.65074643379\n44\t53571.98326688406\n23\t35534.28963077442\n26\t44148.44165255368\n23\t20000.0\n20\t47582.610971767775\n36\t55564.67597645724\n46\t52957.9622669954\n33\t84702.31527297088\n19\t63623.59061372555\n43\t62956.777796337265\n51\t30350.964481445833\n28\t49530.36918824301\n30\t47700.05789014457\n40\t43208.78201787989\n51\t43001.790017299805\n29\t27878.155690875643\n21\t35862.20192978007\n41\t68111.40104147424\n42\t52856.279620102265\n35\t47403.96372588499\n29\t54918.82998020938\n44\t72510.86018051727\n40\t55063.157813136786\n27\t63105.611963965566\n35\t42300.92736417614\n21\t45720.55073879921\n41\t60309.653275955134\n32\t83389.8056250567\n30\t76446.62289272311\n34\t63742.421041842084\n35\t57271.50640241077\n43\t76016.04033440756\n40\t66920.17484567685\n33\t20595.06966444008\n42\t39191.03728217167\n39\t60072.10488036898\n30\t28195.486516735415\n33\t41536.16492864707\n33\t44502.77584513039\n40\t51157.51140631249\n31\t50688.54687660688\n31\t50663.1935924976\n54\t67379.61275860471\n44\t51021.64201824198\n27\t49230.54801893149\n40\t34762.41843784726\n36\t70365.19302978738\n38\t44927.53729078771\n36\t38694.545079980875\n46\t58196.35862303457\n38\t43495.881064254056\n34\t47110.708903085586\n45\t58876.902614786035\n37\t50102.760643306654\n36\t89674.14062950952\n38\t53877.57185021203\n34\t64267.57328318833\n35\t25874.589287605824\n29\t42090.26302127905\n27\t38696.29457624932\n25\t40684.304150460564\n21\t61233.06990755504\n26\t70533.47601666115\n33\t60169.45756951766\n36\t51600.33064650537\n32\t45537.17441931371\n18\t71703.99626779763\n50\t86068.83181232293\n45\t57025.835571755364\n39\t69090.44596107358\n54\t60150.55524693213\n25\t66332.57359698384\n53\t37531.79832834825\n25\t47677.95579786814\n37\t60932.04160068376\n22\t73187.36416122969\n35\t42727.98667543488\n38\t24500.513334398096\n33\t47526.033603381264\n42\t70151.96071522374\n35\t31241.56613368226\n29\t37346.201618026236\n29\t57338.77879076668\n43\t53260.43120857804\n28\t63916.997223298415\n44\t36569.09859331632\n47\t50125.32108746998\n18\t72927.78103604646\n46\t37106.55709544824\n55\t77153.68444465403\n37\t38988.745211669666\n40\t67740.72366066417\n45\t49405.62234680312\n32\t37826.376135415354\n36\t47546.51429271103\n21\t63173.93782268491\n36\t54897.19007647764\n39\t71777.04117165015\n40\t76536.10091402322\n45\t37254.54002023225\n27\t36155.962826344825\n29\t35428.09339568738\n53\t41512.058559279714\n33\t71563.21781229616\n37\t63405.42926000102\n34\t46824.58640616352\n26\t54833.461140657484\n51\t76064.58257748908\n29\t83620.1627646868\n23\t58890.76500164203\n30\t20000.0\n18\t59459.3064213996\n28\t69021.22194312021\n25\t58369.48473784113\n41\t65897.72378102175\n28\t60355.98061690576\n43\t36480.31873777202\n48\t41706.42349954806\n42\t50182.717193047654\n32\t70981.22167357527\n36\t43511.73897519069\n19\t61838.53949751471\n33\t59555.38890881796\n26\t78792.95897618696\n41\t54374.803328058784\n60\t28678.623725856123\n39\t64703.05697345167\n18\t87070.82817451007\n31\t65685.75017299684\n36\t43185.07612284389\n35\t38770.81181231553\n27\t40705.46749738892\n37\t85049.67820573068\n22\t50090.08839217846\n25\t45060.349092579585\n41\t52623.4503380915\n24\t50246.394270914476\n40\t78514.75539681256\n21\t39782.83763475546\n52\t72709.6484749067\n27\t56831.381446766274\n32\t73105.39770141528\n38\t78739.28565601076\n29\t56271.96450869642\n36\t50274.04585601251\n40\t55992.682477976545\n44\t53578.439919923025\n42\t30145.50316391908\n33\t78287.20560677609\n33\t58686.775260717855\n58\t37553.51222423419\n44\t23987.15019702387\n25\t20086.011506044764\n35\t66557.20655031255\n31\t45715.33647389357\n33\t48176.489978423\n22\t62322.31396808235\n30\t47259.27765847332\n53\t63197.8662408027\n40\t56428.96096565073\n18\t53738.05625276146\n47\t31408.743914627667\n45\t42704.02965341711\n31\t64038.03048380299\n42\t44769.67277703923\n26\t73080.54333676735\n30\t90196.01985990097\n49\t64845.77951261984\n32\t77392.47837047736\n18\t65810.90857444103\n34\t46986.06965991718\n34\t58002.27497211137\n46\t85199.81419146163\n35\t47146.69386058823\n30\t39410.09051682889\n45\t37987.08365327096\n36\t51737.05924249676\n27\t39947.91867035407\n46\t80110.29141155856\n36\t58245.348018869314\n35\t69575.89464640754\n36\t50520.019141304525\n24\t37897.042033658225\n29\t35359.090818500845\n35\t41380.12386732819\n33\t60212.88241040066\n47\t62798.24397651922\n37\t64047.94109588028\n43\t32669.909743272143\n35\t54993.86221152595\n45\t39609.07253661411\n38\t61021.98951376793\n35\t62186.15583246178\n34\t37417.40429460343\n25\t69520.44410794522\n40\t90082.34412292368\n34\t67522.53606376993\n29\t52557.48940673343\n46\t50251.81445185387\n22\t51864.040274912375\n30\t43588.99229834484\n45\t58785.97309978074\n38\t37923.06113268544\n34\t26654.533201031496\n37\t58294.02522720323\n36\t55318.49598663732\n19\t46432.44975344209\n31\t35759.5506608445\n51\t59346.16040371052\n28\t40147.37442144324\n31\t52915.834737019984\n29\t81474.57781189667\n34\t64767.84654363076\n29\t34463.01006427455\n39\t35877.226434815464\n36\t57277.28639115638\n42\t34370.18976911469\n24\t24974.1177814857\n31\t62985.58016945085\n32\t59814.03631481301\n39\t61758.97496918699\n27\t58945.527727268556\n44\t54020.33932491408\n46\t45067.17178485009\n25\t62742.02449131915\n30\t77948.25232607726\n29\t47481.56488834819\n61\t39688.89684687552\n30\t37973.208708831415\n51\t41999.046499994234\n22\t58038.97786714111\n25\t22905.586546696595\n28\t61587.55636648489\n26\t64658.695154442335\n32\t28028.8246008568\n27\t40312.293455836014\n26\t56195.21469768121\n46\t52847.95404543403\n47\t62794.562024028855\n44\t52882.94767725451\n40\t73971.54290162447\n35\t50182.45901434477\n30\t40254.5051992037\n25\t39048.37200607365\n38\t66032.02763922533\n23\t55444.317129353745\n25\t64505.73851087793\n46\t64196.83748843777\n54\t24702.25220854239\n38\t37898.76098464835\n46\t39690.62439244269\n32\t42759.03717262356\n21\t48694.67010135211\n41\t69987.24391925779\n40\t72977.23528575849\n35\t50606.63754695505\n32\t51230.78708012883\n44\t44418.494139140705\n25\t56337.81545857816\n27\t58037.81324100905\n24\t67097.13332503398\n35\t66976.5808897383\n24\t20468.22923396423\n28\t52711.82578544323\n27\t75761.50046335155\n32\t48428.27609042625\n20\t72088.62727544933\n35\t50403.22299983217\n47\t57623.85201162946\n36\t37946.63961401276\n50\t38511.27163650228\n48\t65882.37358394521\n42\t68227.27420300998\n35\t55396.433593007394\n35\t36587.136360424134\n42\t55657.068349108216\n31\t73858.52441011416\n18\t81142.99705077641\n39\t50249.381015111285\n23\t30101.982246133146\n25\t67605.45399332169\n35\t50860.553553174985\n34\t69145.6096234156\n20\t59216.083375264294\n36\t41748.33841357225\n44\t55873.66540989072\n23\t74625.07550581492\n47\t52762.690165491345\n19\t39477.92254831934\n56\t31170.337471050152\n30\t43417.52969703022\n36\t48847.95607343527\n18\t67299.98703875889\n34\t38187.260982825675\n37\t78306.27828594454\n34\t34942.716837382126\n29\t89972.29138835255\n25\t80882.77835131707\n46\t57117.49374081988\n35\t30284.596978456117\n50\t54168.63907026367\n29\t49197.385630202414\n30\t35885.69165423614\n43\t59365.14440871163\n18\t42645.353052165345\n22\t44276.41229425628\n45\t51944.82048141467\n23\t46376.36756941445\n18\t86172.34925665044\n53\t46964.280505006755\n21\t61613.21517091713\n36\t57182.83738315543\n35\t60291.25337888308\n18\t61436.326054163976\n32\t68220.42229909184\n39\t58996.69113427964\n38\t58373.4369232948\n44\t55877.156027022094\n31\t52923.73221490038\n42\t41323.03177508984\n28\t54086.97433869698\n20\t58619.010628983\n22\t61032.46834859192\n20\t57704.27159485355\n45\t51505.67479827199\n19\t54143.80145206153\n37\t46695.30273173812\n32\t59698.35986509846\n33\t51683.07658128817\n48\t57708.41407296205\n30\t70012.04565073829\n41\t44359.6163553637\n35\t63950.43071365726\n33\t55498.15269828059\n57\t85317.90399371133\n20\t51755.49507304736\n47\t65427.46874726599\n41\t55230.30177633966\n30\t34175.43237529759\n51\t47189.66356721283\n18\t68207.0665814259\n29\t48509.5830908759\n22\t21696.155277405793\n39\t54528.95474613244\n23\t38614.95553073484\n39\t56977.265988950785\n33\t78267.20622097029\n30\t66541.85966204356\n38\t78049.83743109967\n32\t46577.31967833263\n24\t52852.50499546702\n63\t39333.457047883305\n30\t44739.348324398576\n18\t41096.7275157073\n26\t35399.15546182064\n22\t75487.84937997011\n43\t23620.595574603667\n38\t75552.08357206835\n38\t73690.88387380347\n31\t62496.89013218497\n32\t38282.390978588955\n31\t31267.373328351892\n34\t46773.944781046535\n43\t64376.80684509886\n38\t55045.95456161012\n40\t39347.50757357864\n39\t72223.07176984735\n43\t80265.74992272307\n37\t51601.01253978104\n38\t56640.053553960184\n46\t32367.269745557558\n28\t48784.199258364475\n26\t62656.599670014904\n23\t60322.848103866665\n36\t47384.9822618544\n18\t50886.3473728533\n39\t48291.83895183172\n33\t50823.02929422422\n46\t61348.5220377719\n28\t25486.94371946316\n32\t53884.75727788117\n46\t60249.63303438533\n48\t46442.729715383844\n28\t47810.00434052678\n36\t48244.08338776826\n37\t47814.2503969426\n38\t55088.2566677556\n32\t56935.04137020675\n47\t23492.285256493007\n18\t64793.20557208432\n30\t50650.016734795616\n39\t83994.44763202801\n39\t37125.27191651937\n48\t41990.282368685024\n46\t51956.36532125108\n32\t61198.381745290535\n47\t25738.490089427476\n27\t42563.499218258396\n44\t63869.80240860765\n53\t40778.140803511866\n47\t75550.39564564341\n36\t48191.74601726392\n31\t41509.40197987155\n19\t64153.66386684279\n38\t79114.2608023667\n23\t61245.94388115845\n27\t73906.44098834888\n23\t80149.53010955446\n30\t41172.11980108632\n34\t69075.87001089379\n37\t32147.94236044679\n28\t61373.53797679577\n45\t53930.231642277715\n32\t73644.25304563093\n27\t72583.77269477262\n37\t63546.750258016036\n54\t59476.41849224227\n38\t62625.53015082926\n31\t55926.56307064818\n19\t54082.063883381445\n32\t76638.67258378664\n37\t78443.34729517264\n31\t52875.112034466896\n18\t58564.54604516117\n26\t56224.82837159162\n49\t30824.523370942075\n49\t49953.4663358199\n26\t78995.56301572153\n41\t43753.36187452284\n23\t86718.15193451953\n49\t72581.89464384073\n37\t61022.472258193135\n44\t63412.64928964631\n18\t41241.89955497462\n41\t51021.56871662947\n34\t76620.98665482638\n43\t45782.059912397\n44\t70916.97635423199\n35\t34344.397158444124\n28\t37027.62381287484\n42\t83520.76998379474\n34\t54822.442806395135\n26\t46922.50169508489\n25\t75441.11240498444\n20\t73687.32332445256\n29\t68811.31847885858\n46\t46451.531208818415\n36\t50696.23636093487\n29\t59674.43235587095\n43\t65415.99013220856\n26\t47372.74638972194\n35\t57561.056659310445\n33\t59010.86951196109\n42\t74301.5463456288\n19\t66316.98743402679\n26\t32397.975327470638\n18\t51795.545372719214\n32\t41068.24945024875\n47\t63521.3113091751\n29\t68847.30025757567\n29\t56523.339784153664\n43\t50978.09454058225\n45\t56037.546895539745\n34\t58133.789102166316\n41\t45398.5052242464\n24\t36719.333488459524\n48\t24247.914361669704\n56\t74007.73197608326\n40\t62445.493654524485\n18\t60437.66517016259\n29\t73977.98331929423\n41\t36167.979854613746\n30\t28965.53686217472\n47\t60763.47874778634\n40\t59399.070631651455\n27\t29030.397854908697\n35\t60392.81593210708\n26\t48996.65571400648\n33\t42893.67910393627\n29\t49998.644375763804\n46\t20000.0\n56\t46129.386649120934\n20\t44435.58145773693\n18\t63356.536704042104\n32\t52626.54795233671\n19\t64583.033105183225\n35\t20000.0\n42\t42413.52666143428\n49\t63339.95577357166\n37\t50367.03054140267\n33\t67681.90799461551\n18\t27930.95635916165\n35\t65966.66259534212\n35\t45412.91173322439\n41\t43957.04373425989\n27\t69865.70570391178\n30\t72428.51694934758\n20\t70520.49544130923\n18\t85579.628875724\n23\t74002.05412665001\n19\t43068.451244015516\n38\t57124.57192203475\n29\t49597.03137272597\n29\t85436.34789923599\n25\t71573.04932048064\n18\t52166.79794929816\n50\t68168.64696629503\n24\t36517.02300530343\n30\t58753.92606468209\n20\t40931.16261095373\n44\t29671.116990588896\n36\t66768.04356294751\n26\t68628.86642781328\n31\t61858.18954317979\n51\t52255.494391502485\n34\t36004.62017730386\n33\t37579.79693924129\n25\t40460.80030391804\n18\t51494.900624126145\n33\t71142.68100407373\n38\t70906.0631661798\n45\t30271.486005806844\n18\t44601.499949245794\n23\t44197.584706422414\n29\t20000.0\n34\t63491.814204248614\n33\t51307.602635222174\n33\t53302.86195053536\n39\t75188.06587563458\n25\t56324.63519926536\n44\t48539.04302550973\n39\t63581.16431507415\n31\t70883.07769863342\n51\t59447.01349073838\n50\t65337.84398047223\n44\t52816.485253856736\n18\t53772.13380460506\n50\t56695.310654482426\n42\t43703.185743510076\n55\t46479.075784455985\n47\t75668.1946272771\n50\t85119.34143793481\n43\t78882.9687105727\n48\t35151.139648471784\n54\t33702.13698122541\n37\t37139.358520822585\n19\t57015.81162819221\n31\t20000.0\n38\t46167.97650070749\n35\t76106.4893374167\n22\t69736.58246093361\n18\t47363.58024139739\n27\t48499.66838244043\n43\t63508.625602103566\n50\t69029.03132866298\n44\t47002.940983903594\n45\t51484.509674208435\n34\t46509.85407219965\n18\t35029.75837937179\n30\t51703.84377967279\n32\t50561.086896868546\n30\t36090.33826017016\n35\t64691.21406456594\n39\t62249.81017938834\n43\t65435.795512676144\n32\t43478.94466803448\n18\t25246.36482828029\n30\t62009.96694468474\n35\t45038.3092805543\n47\t41639.978001314485\n29\t36144.20388034836\n40\t50870.162078692694\n37\t78659.9094557571\n35\t47418.25717966728\n44\t38652.95433749599\n28\t64779.00101545043\n29\t57592.18419656926\n34\t23210.479484676885\n28\t64935.1947962993\n40\t86927.016527524\n27\t20000.0\n37\t36464.40963966814\n33\t20000.0\n37\t53870.433688887475\n30\t69855.7935491703\n31\t56582.51124694419\n35\t75879.93547169004\n37\t67458.254354952\n34\t80532.20985253266\n52\t72403.16152160642\n25\t48955.85397085743\n34\t56000.8968435226\n19\t41969.846267785404\n38\t51540.15746697927\n23\t55927.4750802718\n32\t53726.390146969694\n31\t75133.80289455416\n37\t50047.47906239754\n29\t41018.703796639646\n29\t41955.83447645219\n49\t64826.504074337965\n37\t33952.92387866501\n29\t51982.20744773624\n32\t74912.50368183132\n51\t59388.97668611245\n32\t53880.919163218685\n28\t54461.34394542355\n28\t39556.53111659241\n29\t42142.979343481886\n29\t52072.27490628134\n22\t59069.0954516394\n23\t69222.25017703166\n26\t56388.40925757152\n40\t75291.61263631372\n31\t79077.97022814288\n32\t66929.00818723306\n47\t73374.72112083827\n47\t40139.29717917858\n32\t37762.01597967907\n28\t62769.60064435248\n26\t34881.8528219943\n41\t50644.422339761004\n32\t66567.87857994609\n31\t76200.5938702781\n26\t51186.76524567902\n27\t45250.83557038465\n38\t59806.92432267374\n21\t38896.84834714166\n44\t52400.82027559859\n29\t54879.99927585578\n33\t54580.24010993807\n21\t56327.552107268224\n34\t42482.27716641787\n31\t44095.10511072374\n34\t43793.25608451069\n49\t30698.584912074144\n36\t60127.45482769159\n27\t68419.86177538008\n27\t66944.65124280304\n40\t51062.54709308868\n47\t42834.921408041686\n37\t66164.71963544034\n41\t64583.84533561827\n41\t58261.309636544436\n49\t81164.6687863491\n18\t54603.61717949406\n41\t51146.65024112667\n44\t49002.740033881\n21\t31586.834402787892\n26\t64920.099462134385\n26\t53417.719492633354\n27\t62648.96862035193\n30\t82628.1700313686\n37\t49138.72345143074\n43\t20000.0\n45\t62216.05554266158\n26\t57502.89084839013\n26\t44013.191860430205\n48\t60958.99503432246\n41\t66791.44480156562\n35\t40800.85134682679\n39\t50480.02207894927\n34\t77151.30594773393\n40\t44175.66713155952\n31\t56000.04633120678\n37\t20000.0\n19\t32772.31748378057\n28\t57362.762459991995\n28\t73419.81714378402\n31\t34569.554769984985\n25\t56118.46093090745\n29\t49364.231364194246\n19\t69296.3208248874\n40\t36732.95042016122\n34\t61451.16472551228\n18\t45194.63969505615\n26\t58345.570372397124\n38\t56033.96578462709\n29\t51223.313887860735\n28\t62167.177694040765\n34\t55654.79101454442\n38\t53007.905468849574\n20\t49653.75198965886\n40\t56163.97584618005\n26\t58330.65322219108\n34\t40162.86879879068\n34\t49757.931431239354\n29\t39172.21083053241\n24\t54402.31865828821\n32\t46115.01692718958\n51\t66561.74721971883\n21\t65090.90466635035\n51\t41158.77154653445\n32\t54965.38981902288\n35\t64577.748688725456\n24\t52370.37519753957\n27\t44076.73712791683\n29\t38613.94707932806\n24\t67814.01342367544\n32\t68540.69722427454\n30\t51880.78601688927\n53\t66492.06376790017\n23\t20000.0\n36\t74913.31976063855\n37\t52645.82792084232\n24\t57126.64841199234\n41\t50192.23414501046\n31\t75935.61222801259\n18\t39089.025640666994\n41\t77116.90489910253\n23\t60944.06381417667\n24\t64339.96323877237\n41\t50061.931550066256\n31\t35376.712031554445\n44\t68957.66148304152\n47\t59671.12526783996\n28\t75424.35187463227\n42\t52093.355196764525\n27\t48711.52931651628\n57\t75821.32354960454\n28\t83678.41246746166\n45\t55140.20764548595\n43\t43708.63754714341\n38\t67157.96144184323\n28\t51189.691507439886\n33\t63988.94238101198\n18\t51110.8603843187\n37\t78460.2102731772\n38\t44507.65742423951\n36\t62207.9449378294\n18\t47669.47044651814\n22\t50777.40157868846\n27\t48819.16517859135\n37\t66079.12099140123\n37\t68775.44672400807\n33\t63366.08243398557\n41\t53380.247998820945\n24\t57102.70046502389\n41\t68465.82352689137\n39\t68939.67380811408\n38\t20000.0\n33\t50916.66742340956\n53\t51636.11812840772\n39\t65038.78846189243\n25\t53998.43773433881\n37\t65787.75071423932\n42\t38820.088434541714\n29\t58900.8177319117\n45\t68503.08480175742\n38\t32884.25696022778\n18\t92704.65202313355\n37\t72863.28899299778\n30\t55020.299536984625\n40\t42573.878391418475\n44\t52373.72274589441\n36\t56257.03539417011\n51\t61609.93835218071\n33\t77509.91274190047\n41\t47858.52295835731\n43\t63440.64756358842\n34\t35613.5625609983\n42\t48795.98928512099\n29\t60650.75271804038\n30\t65368.93736513207\n21\t43701.512850030704\n37\t48388.12455982129\n38\t76908.34953375318\n46\t72428.62929442068\n42\t58126.8582557855\n32\t21450.32270168927\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "Age\tDaily Time Spent on Site\n28\t74.93428306022466\n31\t62.23471397657631\n29\t77.95377076201385\n36\t95.46059712816052\n46\t60.31693250553328\n27\t60.317260861016386\n45\t96.58425631014782\n27\t80.34869458305818\n26\t55.610512281300956\n43\t75.8512008717193\n44\t55.73164614375075\n43\t55.68540492859486\n21\t69.83924543132068\n30\t26.73439510684404\n43\t30.501643349739346\n35\t53.754249415180546\n24\t44.74337759331152\n39\t71.28494665190547\n27\t46.83951848957578\n52\t36.75392597329417\n50\t94.31297537843108\n41\t60.48447399026929\n48\t66.35056409375848\n35\t36.505036275730866\n42\t54.11234550949635\n49\t67.21845179419732\n37\t41.980128451553945\n32\t72.51396036691344\n18\t52.9872262016239\n34\t59.166125004134464\n43\t52.96586775541206\n44\t102.04556369017875\n40\t64.73005550524132\n29\t43.84578142088199\n18\t81.45089824206377\n30\t40.58312700057955\n31\t69.1772719000951\n31\t25.806597522404488\n41\t38.436279022031385\n54\t68.93722471738246\n36\t79.76933159990821\n32\t68.4273656237994\n32\t62.68703435223519\n36\t58.977926088214225\n26\t35.42956019265145\n36\t50.60311583210583\n39\t55.78722458080425\n37\t86.1424445243783\n39\t71.87236579136923\n39\t29.73919689274532\n18\t71.4816793878959\n41\t57.29835439167367\n28\t51.461559993880826\n24\t77.23352577681736\n23\t85.61999044991902\n39\t83.62560238232398\n32\t48.21564953554723\n18\t58.81575248297571\n39\t71.62526862807128\n20\t84.51090254244718\n36\t55.4165152430942\n37\t61.286820466723654\n43\t42.873300519879436\n52\t41.07586751838659\n21\t81.25051644788397\n34\t92.12480057141646\n32\t63.55979756839332\n39\t85.07065795784048\n37\t72.23272050095268\n31\t52.09760490789751\n30\t72.22791211016828\n23\t95.76073132931938\n44\t64.28347921780097\n39\t96.29287311628012\n44\t20.0\n31\t81.43805008750448\n28\t66.74094136476343\n24\t59.01985299068265\n38\t66.83521553071004\n24\t25.248621707982146\n53\t60.60656224324976\n21\t72.14225143023492\n37\t94.55788089483032\n50\t54.63459563452705\n40\t48.830127942136244\n36\t54.96485912830927\n25\t83.30804235404148\n21\t71.57502219319369\n42\t54.404795924659226\n50\t75.26534866226712\n30\t66.9415509869608\n23\t84.37289981065778\n18\t50.95893812245295\n25\t58.44675706804463\n33\t57.15783693735685\n50\t35.72970103735763\n41\t70.92240554129152\n38\t70.22110544359779\n30\t65.10226913284922\n29\t60.308257332497064\n49\t36.69258515899172\n37\t56.58709354469282\n18\t58.14570966946461\n28\t48.95445461556762\n26\t61.77428576667982\n29\t73.08101713629077\n40\t102.7237180242106\n33\t68.49155625663678\n34\t70.15100781445528\n48\t63.511081684676654\n28\t26.62457569401917\n53\t64.46972249101566\n28\t66.20460419882053\n35\t114.26484224970572\n32\t61.15278070437755\n36\t71.03094684667225\n39\t64.30576460589513\n39\t41.626439247609355\n27\t87.85645629030041\n23\t80.03866065373549\n60\t80.82063894086093\n30\t46.81225090410522\n41\t93.05588621872198\n18\t36.962978744154384\n32\t76.73714187600541\n33\t108.80911251619958\n39\t45.18927349738623\n18\t53.67404540794456\n36\t66.99302730175282\n23\t54.93048691767601\n38\t33.98673137867735\n24\t66.37125949612054\n26\t43.7539257254779\n32\t74.47184861270364\n24\t46.61151531532394\n30\t95.99868810035079\n23\t49.334934153275256\n18\t58.55876967588649\n45\t81.27034434739339\n22\t40.3827136713209\n33\t69.54919869208258\n42\t91.14285508564856\n28\t32.85033530877545\n26\t68.69267717064608\n37\t70.19765588496847\n46\t80.6364574355462\n23\t40.26098578243836\n33\t38.59086773831447\n18\t75.43883131233795\n31\t70.93969346466372\n35\t70.00985700691753\n26\t71.9289641899395\n30\t51.399505568430186\n20\t69.64507394322007\n35\t70.86144946597362\n45\t50.71297163947264\n24\t102.31549022289514\n28\t74.47665841823576\n40\t41.173930055947025\n47\t78.1310721726766\n20\t45.50636659545357\n33\t80.74169207484904\n37\t88.17191158014808\n33\t48.58635363296579\n18\t84.26752258488644\n40\t73.25561853872996\n50\t81.4412031998898\n36\t102.93585965307895\n24\t60.09223767994259\n29\t49.925276712850206\n52\t47.209711407489536\n44\t48.68379430069123\n41\t63.45796581171792\n38\t71.82303949633288\n28\t70.53381598660039\n32\t81.54366498072048\n34\t65.26003783755814\n40\t94.07068154314634\n50\t59.70686333524088\n46\t119.40338333179238\n20\t77.51334695530012\n37\t47.856848871674345\n42\t43.582150038777755\n41\t74.64944830486371\n28\t60.53074429348298\n64\t79.28000988184183\n22\t74.4647524914709\n24\t63.54342174686254\n37\t48.0641256386319\n56\t34.70305550628271\n26\t56.06970095865958\n32\t82.12797588646944\n45\t69.28187488260409\n34\t40.08522442576024\n31\t68.46361851702363\n40\t72.70634759457674\n37\t47.32285127597734\n45\t68.07450211891056\n47\t66.16417436892\n38\t42.14059404338754\n37\t72.15574720696567\n37\t76.21569052736469\n39\t86.66102486350553\n35\t86.07604104069806\n34\t37.44661264085818\n46\t46.243499201697546\n50\t75.3007053441732\n19\t75.27571901824417\n35\t75.30095372612095\n28\t142.05462981309444\n31\t76.41781021386333\n39\t87.71131280361197\n41\t84.08003526986406\n33\t78.02782502611596\n18\t58.69461510719309\n25\t80.17938440986535\n43\t49.54349570924856\n18\t60.26362786519982\n46\t55.29272904341793\n40\t66.63748278772646\n48\t111.29317133347017\n33\t27.654696148165037\n18\t78.72520380749027\n39\t32.74568257620697\n47\t55.56136268421133\n44\t86.77901193934733\n28\t66.28560038190926\n35\t43.445104441413875\n29\t50.693925814800636\n26\t78.59195497869352\n44\t50.39266736565727\n23\t69.3291717916395\n26\t65.91143679807628\n23\t51.96799304788366\n20\t107.87888178650651\n36\t77.67838044636022\n46\t24.49714826684786\n33\t68.72908629538856\n19\t51.76427070463224\n43\t82.04866669592448\n51\t49.14958523134599\n28\t62.70527117066202\n30\t75.09974557960915\n40\t82.31510388340243\n51\t40.994071858884475\n29\t58.30997528318103\n21\t55.50109377678088\n41\t51.93341534852576\n42\t100.30908480562194\n35\t73.09963421921911\n29\t39.782320913299095\n44\t83.35723894109552\n40\t107.44312394025266\n27\t85.64930521102293\n35\t34.61260068091973\n21\t55.31531854267497\n41\t90.33822298373245\n32\t50.846610687624384\n30\t73.87638856292457\n34\t80.49268106858673\n35\t46.46139056843834\n43\t63.809492878764\n40\t20.0\n33\t44.51224717331421\n42\t59.948636972136796\n39\t40.044336360703014\n30\t97.6482260786327\n33\t36.397172440787344\n33\t56.19911026606032\n40\t67.61481154572182\n31\t93.82546578132231\n31\t36.282756976411214\n54\t88.26327504309918\n44\t65.20466122039174\n27\t45.36982697904098\n40\t74.24206948526542\n36\t68.9811939114694\n38\t52.99566245682411\n36\t66.39604169980038\n46\t57.2937280627648\n38\t67.27034690502497\n34\t78.24261349042094\n45\t96.72033632290704\n37\t40.24369002346302\n36\t107.66066749312533\n38\t25.958244009549965\n34\t61.964298099288335\n35\t76.76634412969153\n29\t70.61983735470065\n27\t52.546009603588125\n25\t60.83755499285449\n21\t55.139981306823344\n26\t53.21270486111577\n33\t81.99204194042049\n36\t72.14030971930094\n32\t51.14180809478692\n18\t82.99199750866501\n50\t71.14599041753219\n45\t81.2572423767792\n39\t77.59257683847224\n54\t48.420099781558555\n25\t53.79637919606061\n53\t79.94587210246523\n25\t77.2074053086693\n37\t64.58196812071704\n22\t67.34654766617564\n35\t90.5532979157685\n38\t53.168572223283405\n33\t75.94194762340075\n42\t60.95614695132212\n35\t60.646375935455595\n29\t86.9755370397438\n29\t81.5083269797606\n43\t81.27019272001277\n28\t91.10957614308658\n44\t65.42007683265518\n47\t78.63905942589928\n18\t58.79466486813088\n46\t71.48332704976885\n55\t62.397138912646305\n37\t66.93991929985437\n40\t76.90314050873828\n45\t48.63558633533055\n32\t106.84774551370921\n36\t44.87965237000596\n21\t40.71622774424536\n36\t88.16221747000135\n39\t80.83325387925872\n40\t77.4823963410431\n45\t77.5669101852856\n27\t64.7550645430617\n29\t47.05491257028337\n53\t66.51609116387452\n33\t51.456765769757766\n37\t84.50239466835502\n34\t62.05885236995723\n26\t48.49005606414977\n51\t58.57228316694013\n29\t73.25862908551248\n23\t53.7255089439205\n30\t48.555592088671375\n18\t69.87374422983825\n28\t69.89933142217446\n25\t54.8611364925774\n41\t55.57923388763354\n28\t69.64099874715272\n43\t36.03831317005351\n48\t36.850724512468894\n42\t50.63111557495128\n32\t60.73105696576305\n36\t71.2181513119601\n19\t94.50712433899105\n33\t82.15319246404039\n26\t61.80122940073146\n41\t64.61967584194622\n60\t44.94941270724382\n39\t64.6297372801522\n18\t59.22682722159723\n31\t71.45437120676179\n36\t48.45538112895354\n35\t75.38693028482345\n27\t95.65477826005156\n37\t62.82479703086285\n22\t73.03423444197882\n25\t78.80287983422225\n41\t56.97559056228327\n24\t69.48184963620834\n40\t65.2518480156359\n21\t66.95352197097664\n52\t49.539804322890674\n27\t65.49020348517885\n32\t74.95996582490899\n38\t94.02287215590084\n29\t84.18541652170414\n36\t108.06364915023113\n40\t49.65304874223901\n44\t82.44641273441357\n42\t68.66684011476704\n33\t108.79605866435344\n33\t48.83403429289697\n58\t48.20556315638448\n44\t53.01214709111956\n25\t22.52208551380386\n35\t54.48489956638478\n31\t49.81734676892604\n33\t68.00787572952416\n22\t71.83511951554318\n30\t102.52341678431773\n53\t84.008476763721\n40\t53.46192688675194\n18\t47.03170657303284\n47\t74.83838343013011\n45\t38.59533585958715\n31\t101.62917531708707\n42\t88.58880241442574\n26\t55.616486957905906\n30\t30.73730941818245\n49\t92.07744748330825\n32\t62.70920309494764\n18\t89.75632623946923\n34\t33.11144682411266\n34\t53.012499540924544\n46\t65.10487399436366\n35\t65.93961187529484\n30\t55.99869057041513\n45\t77.45699864694997\n36\t43.64759141234811\n27\t62.15241029957413\n46\t67.40591263423798\n36\t75.28877668117498\n35\t79.2322975617778\n36\t42.507158163242615\n24\t34.317716585287556\n29\t90.55353643797018\n35\t71.64628023959183\n33\t50.03026926886893\n47\t96.02303951045046\n37\t67.31349268585717\n43\t88.58594368127653\n35\t66.35036962820217\n45\t106.21495849763974\n38\t100.10681684886409\n35\t60.02071703041853\n34\t84.43141901908712\n25\t77.90751899170294\n40\t92.37263115064698\n34\t45.70153078839791\n29\t78.72102919996878\n46\t86.16848973699176\n22\t29.825210271537713\n30\t41.3348297466845\n45\t24.21535644479799\n38\t59.61186331110885\n34\t79.35084511591924\n37\t95.04714104192055\n36\t66.4818956083955\n19\t97.57231091142583\n31\t37.39797083570217\n51\t30.932351212896904\n28\t63.889046022067625\n31\t72.68130897878615\n29\t64.34610503811814\n34\t23.651157999202468\n29\t63.21759920974423\n39\t38.91060998990294\n36\t78.39345097660077\n42\t72.33196492193696\n24\t46.2024042734529\n31\t54.72266165326613\n32\t43.815729562220966\n39\t63.74641805453656\n27\t84.10284641002477\n44\t45.285479073289125\n46\t75.08093031035689\n25\t54.39484763255118\n30\t49.142543354753116\n29\t62.85939280090884\n61\t44.295153551612515\n30\t53.927013893056355\n51\t41.04244214822303\n22\t104.29450265832779\n25\t65.70527103943458\n28\t51.005489840148286\n26\t69.27959821468444\n32\t62.753439006183406\n27\t60.58060800933554\n26\t77.2833340008685\n46\t80.1501542009461\n47\t54.38997704778945\n44\t53.4836351871064\n40\t59.49896605696712\n35\t20.0\n30\t34.69617875602896\n25\t92.3374853488905\n38\t97.89935427002567\n23\t60.01927920887243\n25\t76.53113926111533\n46\t71.22500309087073\n54\t126.57761616910476\n38\t87.39149822869153\n46\t62.44164817038467\n32\t45.889191187991486\n21\t32.87107359484855\n41\t69.06927271734446\n40\t49.87298509431393\n35\t36.55492580804652\n32\t52.06854231514947\n44\t43.3690399277121\n25\t98.74283270145129\n27\t82.63279513898901\n24\t64.84054717366766\n35\t94.59888277780053\n24\t66.54736615295236\n28\t47.774315973434724\n27\t95.46248154539315\n32\t75.77820087369318\n20\t44.25507691347087\n35\t61.193226438327834\n47\t47.48763493230486\n36\t37.34400538071328\n50\t83.52355095063282\n48\t103.18833280940261\n42\t37.02864852361718\n35\t76.25938473381142\n35\t51.98714861756346\n42\t55.25749232470608\n31\t53.15212151522262\n18\t47.72018460640368\n39\t65.97043255889653\n23\t48.38099767177924\n25\t70.40913651559677\n35\t63.99523781101726\n34\t60.22103906267181\n20\t46.848726759168045\n36\t53.46457338863335\n44\t80.10782451651512\n23\t75.01834375248761\n47\t45.44889510402898\n19\t66.98664610858452\n56\t80.02774246743579\n30\t31.61189437757257\n36\t75.8672038475987\n18\t51.74752482108307\n34\t76.41197337186318\n37\t49.73481686914966\n34\t28.902357986709617\n29\t32.44915124233675\n25\t65.96169893322764\n46\t70.19445003442964\n35\t46.91366749791183\n50\t77.77184917554747\n29\t31.7695987546208\n30\t63.678404027053666\n43\t40.77967600475087\n18\t51.96327784395682\n22\t65.94797342632828\n45\t47.791732694320956\n23\t57.308889115403495\n18\t85.1258561842888\n53\t53.462162609537025\n21\t81.71384224130284\n36\t42.40586290684764\n35\t75.59608355830565\n18\t93.83137241315801\n32\t20.0\n39\t49.062094890590465\n38\t76.5414425436108\n44\t60.93909227914015\n31\t72.42291746742617\n42\t52.92029626568359\n28\t66.731795749458\n20\t61.88645529215841\n22\t88.35564123319614\n20\t70.08841686602426\n45\t71.75205324150404\n19\t56.76246067755065\n37\t55.24787551855013\n32\t56.34883624360758\n33\t72.88904284756593\n48\t56.58031038359474\n30\t70.79549713792827\n41\t106.50801597290878\n35\t82.42249406863385\n33\t58.47952935664318\n57\t89.02427844327889\n20\t56.838492539568975\n47\t24.237509296442923\n41\t44.83827378165192\n30\t27.58416157948289\n51\t57.96973031917383\n18\t65.36836758379103\n29\t98.52874624550566\n22\t71.53854747528325\n39\t60.61798942382271\n23\t81.58811162366979\n39\t20.7772938198423\n33\t69.71229116217131\n30\t80.41730387773933\n38\t35.42827508440317\n32\t87.87508086413858\n24\t71.76992814988829\n63\t56.69424172198397\n30\t77.6556373221257\n18\t110.41385715608791\n26\t68.6373251011699\n22\t69.96441172600672\n43\t55.81278200919512\n38\t48.003112610704164\n38\t81.60671633088491\n31\t47.878323481822655\n32\t66.43132474438785\n31\t55.44685106469767\n34\t74.57959651492784\n43\t71.67324210573896\n38\t85.75079888515799\n40\t54.79967202290506\n39\t59.60250129413257\n43\t45.42472568435385\n37\t56.114134798477764\n38\t72.54600986089704\n46\t80.13977233290704\n28\t46.556693516447496\n26\t82.3921184021132\n23\t92.11275717609902\n36\t73.26869806447402\n18\t102.53591625116132\n39\t49.52421601792854\n33\t40.10690593377166\n46\t29.425595021914425\n28\t94.92088622978366\n32\t78.08731312708116\n46\t63.8883065817909\n48\t70.59937252639641\n28\t42.490219054032465\n36\t113.91503959233653\n37\t67.58442363950455\n38\t67.18789589209786\n32\t79.51533247797384\n47\t74.62018463473427\n18\t69.47768048558262\n30\t49.190510891093766\n39\t74.42936714271991\n39\t102.64048992950067\n48\t91.90840092309955\n46\t96.86373253278794\n32\t54.7756864713763\n47\t45.20790359482838\n27\t62.48426159800704\n44\t66.11449824577389\n53\t86.88383036941897\n47\t31.150707405703614\n36\t95.59100638921228\n31\t61.839842028420215\n19\t56.4623786010516\n38\t44.75791249479665\n23\t31.902866562684615\n27\t81.46341167923829\n23\t66.46635934376808\n30\t39.20078200517892\n34\t39.09842455872768\n37\t58.28430601419743\n28\t98.38043050578786\n45\t59.8081729727279\n32\t34.93714093763788\n27\t60.085138718281115\n37\t59.54552860504659\n54\t20.0\n38\t63.91410266964375\n31\t60.38130939582644\n19\t78.92412729626837\n32\t101.9791218989069\n37\t87.53130059095514\n31\t59.62222618890339\n18\t42.869481825166595\n26\t116.46719606499721\n49\t66.18436868028977\n49\t65.27858583825892\n26\t64.51749825779993\n41\t68.9616952153571\n23\t62.11279176152115\n49\t53.526759862395274\n37\t54.062821175192155\n44\t64.34493459568003\n18\t54.131504577324705\n41\t50.74308434645671\n34\t67.12860455383793\n43\t59.900455651582895\n44\t95.07985977165377\n35\t20.0\n28\t86.83013703844924\n42\t89.92170384995258\n34\t23.53219535183701\n26\t58.146248118393025\n25\t57.57118268008417\n20\t36.849766105643575\n29\t49.443666248182495\n46\t42.78848309068343\n36\t100.04540886847246\n29\t83.71356786294922\n43\t90.43110189988317\n26\t79.4334412808647\n35\t42.418964575655416\n33\t54.509594674404525\n42\t74.78749122455837\n19\t40.55744382216109\n26\t79.25996860344776\n18\t60.1934920368373\n32\t57.50358384900805\n47\t79.21919936406982\n29\t73.8852662297208\n29\t57.7806766836184\n43\t88.18659606728497\n45\t43.37873344800205\n34\t77.31871213888527\n41\t76.86202515936768\n24\t58.809071213720195\n48\t71.52266044484236\n56\t39.97772847229394\n40\t83.48054038413802\n18\t61.30195727114022\n29\t54.54553958961921\n41\t85.98018451673778\n30\t50.91312618914482\n47\t36.83077407272881\n40\t33.867416529521925\n27\t77.12019902691279\n35\t39.39141295007434\n26\t100.09588363968729\n33\t23.36141184232556\n29\t98.92912736580077\n46\t69.22034934405237\n56\t63.06573776259215\n20\t54.10161826382101\n18\t72.98272228704141\n32\t64.24730595150304\n19\t87.06603764033042\n35\t67.28455297324079\n42\t68.00603522923755\n49\t57.72775575572288\n37\t63.861087525578654\n33\t71.15603537784118\n18\t30.796632146867488\n35\t38.03629155788574\n35\t79.8652818804543\n41\t68.41730876255883\n27\t61.320333272946414\n30\t65.36867866130787\n20\t71.95163410723342\n18\t54.204806393812774\n23\t49.433905491953745\n19\t68.91690510195363\n38\t45.43254444769936\n29\t73.16505511428943\n29\t30.94832791524319\n25\t85.58311274651288\n18\t74.45194964826086\n50\t70.12059468627751\n24\t84.65381967891028\n30\t98.30948888925153\n20\t85.2874013003626\n44\t28.182515373367096\n36\t39.40846066528597\n26\t52.503628446086424\n31\t65.52182100421668\n51\t75.35318040938246\n34\t50.48512373693069\n33\t68.73533528954157\n25\t49.89234135293355\n18\t52.76964394016103\n33\t36.866778063035554\n38\t46.535335077781916\n45\t37.966307887673324\n18\t45.48253494045335\n23\t86.07283593215679\n29\t46.01202222336114\n34\t117.64764129674782\n33\t74.86635801761778\n33\t68.69672247389748\n39\t47.832844396375734\n25\t79.00619758817983\n44\t53.487243475244526\n39\t67.44019629290723\n31\t116.2016907653759\n51\t63.078802005507\n50\t87.98546652571352\n44\t50.93647149748225\n18\t64.30023019006076\n50\t100.4160127127102\n42\t52.46065884424465\n55\t101.24897115993858\n47\t79.1550387091095\n50\t53.750664482114644\n43\t77.64815478111042\n48\t84.4510889925346\n54\t77.43619924434392\n37\t33.59550560219087\n19\t50.45725648350263\n31\t60.0496272889699\n38\t63.511331417999074\n35\t77.41344195101357\n22\t68.55402001866507\n18\t38.29311282579798\n27\t72.60395702011927\n43\t77.21171490567646\n50\t76.1958089586208\n44\t86.61561451109243\n45\t81.67844309097808\n34\t74.18360158456873\n18\t63.59668577082706\n30\t31.780781329680174\n32\t73.59236438265171\n30\t69.15375374326223\n35\t70.43157674390747\n39\t39.46502848359381\n43\t43.37886919183475\n32\t86.06305706665808\n18\t64.2088969228669\n30\t78.63001394745248\n35\t65.56636752260923\n47\t65.59512278991491\n29\t83.76567611951995\n40\t54.679105435652524\n37\t66.92241553881966\n35\t55.75449422589915\n44\t56.31007545135369\n28\t58.816557530627215\n29\t69.44267543267426\n34\t55.42502756673045\n28\t90.11512251147042\n40\t47.107853955609926\n27\t61.26256711677282\n37\t56.2053788345165\n33\t93.93955768707465\n37\t68.93109553023149\n30\t85.6368907893727\n31\t35.28879253926056\n35\t70.34100531738518\n37\t82.79261591246873\n34\t66.64567978550848\n52\t86.30960750130703\n25\t54.654230997992556\n34\t93.1869488037116\n19\t110.977962472385\n38\t57.74322879120682\n23\t56.08994957198456\n32\t94.06768954235402\n31\t96.59144291461425\n37\t54.54279945693463\n29\t56.596263658082854\n29\t59.364307822789854\n49\t38.11098977931446\n37\t46.626961070316035\n29\t44.91718466495864\n32\t49.64404869791743\n51\t64.30630225226437\n32\t69.68429465073041\n28\t96.01000985628154\n28\t45.03291918522418\n29\t84.68644796953167\n29\t60.72022311548982\n22\t64.01072580695134\n23\t78.49638984333208\n26\t42.54555956875403\n40\t72.64819492368102\n31\t68.32904416426112\n32\t74.84902528016298\n47\t70.78337287815636\n47\t114.10600279821789\n32\t52.24520031497368\n28\t54.380060899963645\n26\t52.53718947150471\n41\t53.890457616794905\n32\t52.252257453869646\n31\t88.78033062215104\n26\t93.4100849597971\n27\t53.58507412501048\n38\t48.352888537915426\n21\t74.42831112772808\n44\t53.95553911438057\n29\t77.65863635511022\n33\t69.058460417026\n21\t34.68511770005536\n34\t95.95010402660122\n31\t100.91755346191044\n34\t52.744226190312276\n49\t57.24596880128032\n36\t70.7173078144981\n27\t71.6891357997405\n27\t78.1708854534566\n40\t105.20409077532699\n47\t61.46105545011901\n37\t49.03405510923093\n41\t37.41361543970946\n41\t50.38139920116162\n49\t64.33746054252406\n18\t100.89115727035576\n41\t54.64777401927657\n44\t69.47575903277797\n21\t64.67154207854496\n26\t88.76786546896167\n26\t115.53864851747244\n27\t54.382624541593586\n30\t55.21121114963556\n37\t85.88321754138144\n43\t78.63782979252623\n45\t101.93414651472068\n26\t76.67856370651927\n26\t57.81415818425881\n48\t76.81309661384618\n41\t87.17407161165815\n35\t81.40964362394729\n39\t75.14548062214595\n34\t86.33349379178307\n40\t88.38591180891345\n31\t92.64317982075055\n37\t77.97419775179286\n19\t61.657638393662914\n28\t67.93427372866645\n28\t89.13017933016714\n31\t48.66128658025528\n25\t72.37346617745803\n29\t57.13322375345279\n19\t65.57489645869634\n40\t90.56903725214598\n34\t68.82198136039807\n18\t65.92873096312297\n26\t37.802877180401616\n38\t79.92507132054442\n29\t77.9096836228215\n28\t108.2650944661092\n34\t58.844435300939985\n38\t69.38300655327878\n20\t69.9876736742151\n40\t96.5490655952695\n26\t63.09408935226096\n34\t70.58043051540679\n34\t77.15793019433079\n29\t68.73218246312716\n24\t56.071327708989436\n32\t68.88179985796616\n51\t86.47263499719544\n21\t44.4696940117788\n51\t67.65939348293752\n32\t50.997583701216534\n35\t88.90093257849685\n24\t34.536261904324505\n27\t53.82156305456823\n29\t72.54423750129041\n24\t96.31048058468681\n32\t63.68499477854024\n30\t53.896009466136036\n53\t102.6231413888118\n23\t36.03972199167512\n36\t21.023880867598365\n37\t73.80028900106664\n24\t54.958915512947776\n41\t44.57534365738574\n31\t79.16712894598706\n18\t69.87601427542398\n41\t53.71842738526543\n23\t39.393912026582115\n24\t82.44914656560289\n41\t78.00402355917322\n31\t63.01648272441234\n44\t101.93273992095331\n47\t43.598304673476946\n28\t34.48949658150522\n42\t51.16183860237511\n27\t64.08827967289004\n57\t69.86678898645384\n28\t60.175278842873404\n45\t72.04110793028593\n43\t39.96921151619112\n38\t93.87529208146519\n28\t63.35697643214863\n33\t87.34591663176255\n18\t71.85450692755408\n37\t74.13506438307567\n38\t76.39534560464408\n36\t73.9541712003463\n18\t77.85445519735087\n22\t91.58305060264863\n27\t68.9304233940294\n37\t79.18007515177024\n37\t63.205286114255465\n33\t93.80234430898946\n41\t51.4721539588146\n24\t101.01880865821632\n41\t64.19684098711313\n39\t36.38449795763904\n38\t67.56208829821578\n33\t51.37896685050238\n53\t81.81287097977449\n39\t51.947520413952184\n25\t56.07633133570441\n37\t27.209185381089384\n42\t55.953873615018466\n29\t20.0\n45\t33.32194353028554\n38\t80.20829312288595\n18\t80.71600317301665\n37\t73.50915123569929\n30\t45.66047713741574\n40\t64.0457728771604\n44\t64.92794921818863\n36\t41.83270621614915\n51\t95.067966035343\n33\t82.54724581151342\n41\t60.58071652340672\n43\t65.53771677989062\n34\t69.16765615895105\n42\t24.165302631514187\n29\t60.056452349588064\n30\t51.36031504004403\n21\t44.96759980210169\n37\t59.377994142280905\n38\t100.95373053699045\n46\t77.8168572253402\n42\t53.57642020434406\n32\t76.45165562712317\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mageData\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [Age: int]\n\u001b[1m\u001b[34mincomeByAge\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [Age: int, Area Income: double]\n\u001b[1m\u001b[34mtimeByAge\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [Age: int, Daily Time Spent on Site: double]\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### 3. Préparation des Données pour le Machine Learning",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:39:07+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771448170_842936554",
+      "id": "paragraph_1745771448170_842936554",
+      "dateCreated": "2025-04-27T16:30:48+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:5212",
+      "dateFinished": "2025-04-27T16:35:44+0000",
+      "dateStarted": "2025-04-27T16:35:44+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>3. Préparation des Données pour le Machine Learning</h4>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\r\n// Définition des colonnes de type string à convertir\r\nval stringFeatureCols = Array(\"Ad Topic Line\", \"City\", \"Country\")\r\n\r\n// Importation des bibliothèques nécessaires\r\nimport org.apache.spark.ml.feature.StringIndexer\r\nimport org.apache.spark.ml.Pipeline\r\n\r\n// Démonstration du fonctionnement de StringIndexer sur un exemple simple\r\nval df = spark.createDataFrame(Seq(\r\n  (0, \"a\"),\r\n  (1, \"b\"),\r\n  (2, \"c\"),\r\n  (3, \"a\"),\r\n  (4, \"a\"),\r\n  (5, \"c\")\r\n)).toDF(\"id\", \"category\")\r\n\r\nval indexer = new StringIndexer()\r\n  .setInputCol(\"category\")\r\n  .setOutputCol(\"categoryIndex\")\r\n\r\nval indexed = indexer.fit(df).transform(df)\r\n// Remplacer display() par show() pour afficher les résultats dans Zeppelin\r\nindexed.show()\r\n\r\n// Application de StringIndexer à nos colonnes textuelles\r\nimport org.apache.spark.ml.attribute.Attribute\r\nimport org.apache.spark.ml.feature.StringIndexer\r\nimport org.apache.spark.ml.Pipeline\r\nimport org.apache.spark.ml.PipelineModel\r\n\r\nval indexers = stringFeatureCols.map { colName =>\r\n  new StringIndexer()\r\n    .setInputCol(colName)\r\n    .setHandleInvalid(\"skip\")\r\n    .setOutputCol(colName + \"_index\")\r\n}\r\n\r\nval pipeline = new Pipeline().setStages(indexers)\r\nval adsFinalDF = pipeline.fit(csv).transform(csv)\r\n\r\n// Affichage du nouveau schéma incluant les colonnes indexées\r\nadsFinalDF.printSchema()\r\n\r\n// Affichage des données avec les nouvelles colonnes indexées\r\nadsFinalDF.show()\r\n\r\n// Nombre total d'enregistrements\r\nprintln(s\"Nombre total d'enregistrements: ${adsFinalDF.count()}\")",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:38:19+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=53",
+              "$$hashKey": "object:9716"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=54",
+              "$$hashKey": "object:9717"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=55",
+              "$$hashKey": "object:9718"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=56",
+              "$$hashKey": "object:9719"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=57",
+              "$$hashKey": "object:9720"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=58",
+              "$$hashKey": "object:9721"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=59",
+              "$$hashKey": "object:9722"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=60",
+              "$$hashKey": "object:9723"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=61",
+              "$$hashKey": "object:9724"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=62",
+              "$$hashKey": "object:9725"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=63",
+              "$$hashKey": "object:9726"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771744006_12999844",
+      "id": "paragraph_1745771744006_12999844",
+      "dateCreated": "2025-04-27T16:35:44+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9115",
+      "dateFinished": "2025-04-27T16:37:46+0000",
+      "dateStarted": "2025-04-27T16:37:42+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+--------+-------------+\n| id|category|categoryIndex|\n+---+--------+-------------+\n|  0|       a|          0.0|\n|  1|       b|          2.0|\n|  2|       c|          1.0|\n|  3|       a|          0.0|\n|  4|       a|          0.0|\n|  5|       c|          1.0|\n+---+--------+-------------+\n\nroot\n |-- Daily Time Spent on Site: double (nullable = true)\n |-- Age: integer (nullable = true)\n |-- Area Income: double (nullable = true)\n |-- Daily Internet Usage: double (nullable = true)\n |-- Ad Topic Line: string (nullable = true)\n |-- City: string (nullable = true)\n |-- Male: integer (nullable = true)\n |-- Country: string (nullable = true)\n |-- Timestamp: string (nullable = true)\n |-- Clicked on Ad: integer (nullable = true)\n |-- Ad Topic Line_index: double (nullable = false)\n |-- City_index: double (nullable = false)\n |-- Country_index: double (nullable = false)\n\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+-------------------+----------+-------------+\n|Daily Time Spent on Site|Age|       Area Income|Daily Internet Usage|       Ad Topic Line|           City|Male|             Country|           Timestamp|Clicked on Ad|Ad Topic Line_index|City_index|Country_index|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+-------------------+----------+-------------+\n|       74.93428306022466| 28| 60224.29371500228|   60.77712129758373|Discover Enterpri...|     Dylanmouth|   1|         Saint Lucia|2024-10-12 10:01:...|            1|             2355.0|    2299.0|        171.0|\n|       62.23471397657631| 31|59249.853888034995|   97.80057412252512|Discover Persiste...|    Allisonfurt|   0|             Vanuatu|2024-05-27 06:05:...|            1|             5835.0|    1492.0|        214.0|\n|       77.95377076201385| 29| 40952.20231291763|  116.51886374829655|Discover Up-sized...|   Elliotthaven|   1|            Slovenia|2024-10-27 07:03:...|            1|             9213.0|    2790.0|        229.0|\n|       95.46059712816052| 36| 63693.76332645607|  145.98675643698766|Discover Profit-f...|  New Erinburgh|   0|           Gibraltar|2024-10-07 10:30:...|            1|             6370.0|    4619.0|        128.0|\n|       60.31693250553328| 46|32648.759866350727|  180.96649306427514|Discover Phased c...|    Robertsview|   0|              Angola|2024-12-24 17:56:...|            1|             5937.0|    1179.0|        215.0|\n|      60.317260861016386| 27|45187.235113595074|  167.76543773487057|Discover User-cen...|Port Shellyfort|   1|French Southern T...|2025-01-13 17:50:...|            1|             9433.0|    5933.0|        230.0|\n|       96.58425631014782| 45|25013.682806532885|   92.82700806210059|Discover Front-li...|    Jenkinsview|   0|             Myanmar|2024-09-20 13:28:...|            1|             3030.0|     742.0|         71.0|\n|       80.34869458305818| 27| 78379.39775444222|   125.1315095133739|Discover Re-conte...|  Robinsonhaven|   0|                Chad|2024-12-15 19:15:...|            1|             7004.0|    1181.0|        107.0|\n|      55.610512281300956| 26| 51526.75759082057|  143.05502354810267|Discover Cloned s...|        Amyside|   1|               Congo|2024-11-18 15:19:...|            1|              966.0|    1520.0|          0.0|\n|        75.8512008717193| 43| 87503.26052224467|  129.51171502214004|Discover Digitize...|  Marcuschester|   0|             Bermuda|2024-12-05 17:17:...|            1|             1877.0|     897.0|        198.0|\n|       55.73164614375075| 44| 67044.24889779242|  129.22819096526823|Discover Customiz...|        Johnton|   0|       French Guiana|2024-06-26 13:29:...|            1|             1568.0|     759.0|        178.0|\n|       55.68540492859486| 43| 61721.47320026537|   71.09026701382913|Discover Reverse-...|   North Janice|   1|            Dominica|2024-08-16 01:57:...|            1|             7437.0|    5138.0|        187.0|\n|       69.83924543132068| 21| 46206.58458578501|   93.89063395441438|Discover Mandator...|  East Patricia|   1|              Uganda|2024-06-12 15:45:...|            1|             4369.0|     270.0|        157.0|\n|       26.73439510684404| 30|  39304.7494646887|  123.88240603442907|Discover Re-conte...|   Peggyborough|   0|            Colombia|2024-08-09 12:27:...|            1|             6998.0|    5500.0|         34.0|\n|      30.501643349739346| 43| 62844.57360845418|                50.0|Discover Managed ...|     New Daniel|   1|Netherlands Antilles|2024-10-17 18:17:...|            0|             4182.0|      69.0|        152.0|\n|      53.754249415180546| 35|53927.289860905265|  165.62577280039417|Discover Fundamen...|    Port Robert|   1|                Iran|2024-09-17 09:38:...|            1|             3404.0|       1.0|         55.0|\n|       44.74337759331152| 24| 34910.94526772048|   85.09283601155721|Discover Multi-la...|   Lake Deborah|   1|   Brunei Darussalam|2024-08-19 14:19:...|            1|             4718.0|     829.0|        158.0|\n|       71.28494665190547| 39| 32247.12375237522|  167.47352533060553|Discover Diverse ...| East Tonyabury|   1|                Chad|2025-02-02 01:17:...|            1|             2076.0|    2740.0|        107.0|\n|       46.83951848957578| 27| 40619.44406284625|   163.9566401788364|Discover User-cen...|      Nixonfort|   0|          Mauritania|2024-06-27 15:13:...|            1|             9458.0|    4930.0|        114.0|\n|       36.75392597329417| 52| 82314.50837899346|  118.25227827550464|Discover Profound...|      Mooreview|   0|              Taiwan|2025-01-16 06:34:...|            1|             6458.0|     160.0|        156.0|\n+------------------------+---+------------------+--------------------+--------------------+---------------+----+--------------------+--------------------+-------------+-------------------+----------+-------------+\nonly showing top 20 rows\n\nNombre total d'enregistrements: 10000\n\u001b[1m\u001b[34mstringFeatureCols\u001b[0m: \u001b[1m\u001b[32mArray[String]\u001b[0m = Array(Ad Topic Line, City, Country)\nimport org.apache.spark.ml.feature.StringIndexer\nimport org.apache.spark.ml.Pipeline\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, category: string]\n\u001b[1m\u001b[34mindexer\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.StringIndexer\u001b[0m = strIdx_9d5ce279f609\n\u001b[1m\u001b[34mindexed\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [id: int, category: string ... 1 more field]\nimport org.apache.spark.ml.attribute.Attribute\nimport org.apache.spark.ml.feature.StringIndexer\nimport org.apache.spark.ml.Pipeline\nimport org.apache.spark.ml.PipelineModel\n\u001b[1m\u001b[34mindexers\u001b[0m: \u001b[1m\u001b[32mArray[org.apache.spark.ml.feature.StringIndexer]\u001b[0m = Array(strIdx_844761d0339b, strIdx_f602767590ef, strI...\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### 4. Division des Données en Ensembles d'Entraînement et de Test\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:39:47+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771759577_1340717534",
+      "id": "paragraph_1745771759577_1340717534",
+      "dateCreated": "2025-04-27T16:35:59+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9202",
+      "dateFinished": "2025-04-27T16:39:20+0000",
+      "dateStarted": "2025-04-27T16:39:20+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>4. Division des Données en Ensembles d&rsquo;Entraînement et de Test</h4>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\n// Division des données: 70% pour l'entraînement, 30% pour le test\nval splits = adsFinalDF.randomSplit(Array(0.7, 0.3))\nval train = splits(0)\nval test = splits(1)\n\n// Affichage du nombre d'enregistrements dans chaque ensemble\nprintln(s\"Ensemble d'entraînement: ${train.count()} enregistrements\")\nprintln(s\"Ensemble de test: ${test.count()} enregistrements\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:39:35+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=64",
+              "$$hashKey": "object:10018"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=65",
+              "$$hashKey": "object:10019"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=66",
+              "$$hashKey": "object:10020"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=67",
+              "$$hashKey": "object:10021"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771960381_1404928257",
+      "id": "paragraph_1745771960381_1404928257",
+      "dateCreated": "2025-04-27T16:39:20+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9786",
+      "dateFinished": "2025-04-27T16:39:36+0000",
+      "dateStarted": "2025-04-27T16:39:35+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Ensemble d'entraînement: 7027 enregistrements\nEnsemble de test: 2973 enregistrements\n\u001b[1m\u001b[34msplits\u001b[0m: \u001b[1m\u001b[32mArray[org.apache.spark.sql.Dataset[org.apache.spark.sql.Row]]\u001b[0m = Array([Daily Time Spent on Site: double, Age: int ... 11 more fields], [Daily Time Spent on Site: double, Age: int ... 11 more fields])\n\u001b[1m\u001b[34mtrain\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [Daily Time Spent on Site: double, Age: int ... 11 more fields]\n\u001b[1m\u001b[34mtest\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[org.apache.spark.sql.Row]\u001b[0m = [Daily Time Spent on Site: double, Age: int ... 11 more fields]\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### 5. Création du Modèle de Régression Logistique\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:40:27+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771975585_1971883111",
+      "id": "paragraph_1745771975585_1971883111",
+      "dateCreated": "2025-04-27T16:39:35+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:9873",
+      "dateFinished": "2025-04-27T16:39:59+0000",
+      "dateStarted": "2025-04-27T16:39:59+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>5. Création du Modèle de Régression Logistique</h4>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\n// Importation des bibliothèques\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.classification.LogisticRegression\n\n// Préparation des données avec VectorAssembler pour regrouper toutes les features dans une seule colonne\nval assembler = new VectorAssembler()\n  .setInputCols(Array(\"Daily Time Spent on Site\", \"Age\", \"Area Income\", \"Daily Internet Usage\", \n                     \"Ad Topic Line_index\", \"City_index\", \"Male\", \"Country_index\"))\n  .setOutputCol(\"features\")\n\n// Transformation de l'ensemble d'entraînement\nval training = assembler.transform(train)\n  .select($\"features\", $\"Clicked on Ad\".as(\"label\"))\n\n// Affichage des données préparées\ntraining.show(false)\n\n// Création du modèle de régression logistique\nval lr = new LogisticRegression()\n  .setLabelCol(\"label\")\n  .setFeaturesCol(\"features\")\n  .setMaxIter(10)\n  .setRegParam(0.3)\n\n// Entraînement du modèle\nval model = lr.fit(training)\n\n// Transformation de l'ensemble de test\nval testing = assembler.transform(test)\n  .select($\"features\", $\"Clicked on Ad\".as(\"trueLabel\"))\n\n// Prédiction sur l'ensemble de test\nval prediction = model.transform(testing)\n  .select($\"features\", $\"prediction\", $\"trueLabel\")\n\n// Affichage des prédictions\nprediction.show(10)\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:40:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=68",
+              "$$hashKey": "object:10841"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=69",
+              "$$hashKey": "object:10842"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=70",
+              "$$hashKey": "object:10843"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=71",
+              "$$hashKey": "object:10844"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=72",
+              "$$hashKey": "object:10845"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=73",
+              "$$hashKey": "object:10846"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=74",
+              "$$hashKey": "object:10847"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=75",
+              "$$hashKey": "object:10848"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=76",
+              "$$hashKey": "object:10849"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=77",
+              "$$hashKey": "object:10850"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=78",
+              "$$hashKey": "object:10851"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=79",
+              "$$hashKey": "object:10852"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=80",
+              "$$hashKey": "object:10853"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=81",
+              "$$hashKey": "object:10854"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=82",
+              "$$hashKey": "object:10855"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745771999531_490868092",
+      "id": "paragraph_1745771999531_490868092",
+      "dateCreated": "2025-04-27T16:39:59+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10056",
+      "dateFinished": "2025-04-27T16:40:19+0000",
+      "dateStarted": "2025-04-27T16:40:14+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------------------------------------------------------------+-----+\n|features                                                                 |label|\n+-------------------------------------------------------------------------+-----+\n|[20.0,18.0,22606.49983536012,124.67141485190619,7073.0,218.0,1.0,226.0]  |1    |\n|[20.0,18.0,44355.24692234769,195.89251900987722,8620.0,7.0,0.0,177.0]    |1    |\n|[20.0,18.0,46943.403768799246,97.88055574502216,9653.0,1385.0,0.0,188.0] |1    |\n|[20.0,18.0,63949.08420388082,83.86048555519793,7891.0,1215.0,1.0,238.0]  |1    |\n|[20.0,22.0,32572.905122741748,109.77607006624004,9426.0,5131.0,0.0,73.0] |1    |\n|[20.0,23.0,25119.024027679414,150.46543994269956,2831.0,7148.0,1.0,119.0]|1    |\n|[20.0,23.0,48027.995060258596,156.2018139309759,4840.0,2632.0,0.0,91.0]  |1    |\n|[20.0,23.0,49414.19221866032,138.52966339821185,8188.0,5160.0,1.0,111.0] |1    |\n|[20.0,23.0,51417.03413230543,98.92076428620757,3784.0,1264.0,0.0,149.0]  |1    |\n|[20.0,24.0,31578.516105274266,165.1370473709067,3545.0,4451.0,1.0,185.0] |1    |\n|[20.0,25.0,51069.47167237843,125.62805101923878,6495.0,4013.0,1.0,220.0] |1    |\n|[20.0,25.0,54397.91491019568,207.6766156443643,624.0,121.0,0.0,69.0]     |1    |\n|[20.0,25.0,54987.65216704147,175.4583640854581,6626.0,5770.0,0.0,77.0]   |1    |\n|[20.0,25.0,66931.067098614,174.48888657603143,5817.0,1.0,0.0,220.0]      |1    |\n|[20.0,26.0,28885.32613035176,174.4755070296489,8483.0,1905.0,1.0,141.0]  |1    |\n|[20.0,26.0,45941.709249204185,103.7547506657451,2268.0,413.0,0.0,73.0]   |1    |\n|[20.0,26.0,64849.66786805767,135.71958027685693,7286.0,118.0,0.0,177.0]  |1    |\n|[20.0,27.0,55732.46687212615,143.8661566674976,1502.0,3110.0,1.0,23.0]   |1    |\n|[20.0,27.0,60044.21246136034,81.96262629260363,2981.0,4853.0,1.0,82.0]   |1    |\n|[20.0,28.0,41385.13437637803,107.42726405041302,6216.0,7403.0,0.0,213.0] |1    |\n+-------------------------------------------------------------------------+-----+\nonly showing top 20 rows\n\n+--------------------+----------+---------+\n|            features|prediction|trueLabel|\n+--------------------+----------+---------+\n|[20.0,18.0,39919....|       1.0|        1|\n|[20.0,20.0,40605....|       1.0|        1|\n|[20.0,23.0,31778....|       1.0|        1|\n|[20.0,23.0,36517....|       1.0|        1|\n|[20.0,25.0,40856....|       1.0|        1|\n|[20.0,26.0,48427....|       1.0|        1|\n|[20.0,26.0,62681....|       1.0|        1|\n|[20.0,29.0,43889....|       1.0|        1|\n|[20.0,29.0,48222....|       1.0|        1|\n|[20.0,29.0,54689....|       1.0|        1|\n+--------------------+----------+---------+\nonly showing top 10 rows\n\nimport org.apache.spark.ml.feature.VectorAssembler\nimport org.apache.spark.ml.classification.LogisticRegression\n\u001b[1m\u001b[34massembler\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.feature.VectorAssembler\u001b[0m = VectorAssembler: uid=vecAssembler_5008fc34ce48, handleInvalid=error, numInputCols=8\n\u001b[1m\u001b[34mtraining\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [features: vector, label: int]\n\u001b[1m\u001b[34mlr\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.classification.LogisticRegression\u001b[0m = logreg_6f64fbfe8f23\n\u001b[1m\u001b[34mmodel\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.classification.LogisticRegressionModel\u001b[0m = LogisticRegressionModel: uid=logreg_6f64fbfe8f23, numClasses=2, numFeatures=8\n\u001b[1m\u001b[34mtesting\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [features: vector, trueLabel: int]\n\u001b[1m\u001b[34mprediction\u001b[0m: \u001b[1m\u001b[32morg...\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### 6. Évaluation du Modèle",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:40:52+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745772014338_1599650527",
+      "id": "paragraph_1745772014338_1599650527",
+      "dateCreated": "2025-04-27T16:40:14+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10146",
+      "dateFinished": "2025-04-27T16:40:52+0000",
+      "dateStarted": "2025-04-27T16:40:52+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>6. Évaluation du Modèle</h4>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%spark\n// Importation des bibliothèques nécessaires pour l'évaluation\nimport org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\n\n// Création de l'évaluateur\nval evaluator = new MulticlassClassificationEvaluator()\n  .setLabelCol(\"trueLabel\")\n  .setPredictionCol(\"prediction\")\n  .setMetricName(\"accuracy\")\n\n// Calcul de l'exactitude (accuracy)\nval accuracy = evaluator.evaluate(prediction)\nprintln(s\"Exactitude du modèle: ${accuracy * 100}%\")\n\n// Calcul de la matrice de confusion\nval tp = prediction.filter($\"prediction\" === 1.0 && $\"trueLabel\" === 1.0).count() // Vrais positifs\nval fp = prediction.filter($\"prediction\" === 1.0 && $\"trueLabel\" === 0.0).count() // Faux positifs\nval tn = prediction.filter($\"prediction\" === 0.0 && $\"trueLabel\" === 0.0).count() // Vrais négatifs\nval fn = prediction.filter($\"prediction\" === 0.0 && $\"trueLabel\" === 1.0).count() // Faux négatifs\n\nprintln(\"Matrice de confusion:\")\nprintln(s\"Vrais positifs (TP): $tp\")\nprintln(s\"Faux positifs (FP): $fp\")\nprintln(s\"Vrais négatifs (TN): $tn\")\nprintln(s\"Faux négatifs (FN): $fn\")\n\n// Calcul de la précision et du rappel\nval precision = tp.toDouble / (tp + fp)\nval recall = tp.toDouble / (tp + fn)\nval f1Score = 2 * precision * recall / (precision + recall)\n\nprintln(s\"Précision: ${precision * 100}%\")\nprintln(s\"Rappel: ${recall * 100}%\")\nprintln(s\"Score F1: ${f1Score * 100}%\")\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:41:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=83",
+              "$$hashKey": "object:11347"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=84",
+              "$$hashKey": "object:11348"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=85",
+              "$$hashKey": "object:11349"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=86",
+              "$$hashKey": "object:11350"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=87",
+              "$$hashKey": "object:11351"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=88",
+              "$$hashKey": "object:11352"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=89",
+              "$$hashKey": "object:11353"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=90",
+              "$$hashKey": "object:11354"
+            },
+            {
+              "jobUrl": "http://5881c4f1a48b:4040/jobs/job?id=91",
+              "$$hashKey": "object:11355"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745772052554_351178256",
+      "id": "paragraph_1745772052554_351178256",
+      "dateCreated": "2025-04-27T16:40:52+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10940",
+      "dateFinished": "2025-04-27T16:41:06+0000",
+      "dateStarted": "2025-04-27T16:41:04+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Exactitude du modèle: 99.93272788429196%\nMatrice de confusion:\nVrais positifs (TP): 2971\nFaux positifs (FP): 2\nVrais négatifs (TN): 0\nFaux négatifs (FN): 0\nPrécision: 99.93272788429196%\nRappel: 100.0%\nScore F1: 99.96635262449529%\nimport org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\n\u001b[1m\u001b[34mevaluator\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.ml.evaluation.MulticlassClassificationEvaluator\u001b[0m = MulticlassClassificationEvaluator: uid=mcEval_0d2110ee179d, metricName=accuracy, metricLabel=0.0, beta=1.0, eps=1.0E-15\n\u001b[1m\u001b[34maccuracy\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.9993272788429196\n\u001b[1m\u001b[34mtp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 2971\n\u001b[1m\u001b[34mfp\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 2\n\u001b[1m\u001b[34mtn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 0\n\u001b[1m\u001b[34mfn\u001b[0m: \u001b[1m\u001b[32mLong\u001b[0m = 0\n\u001b[1m\u001b[34mprecision\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.9993272788429196\n\u001b[1m\u001b[34mrecall\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 1.0\n\u001b[1m\u001b[34mf1Score\u001b[0m: \u001b[1m\u001b[32mDouble\u001b[0m = 0.9996635262449529\n"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n\n## Conclusion\n\n### Dans ce notebook, nous avons développé un modèle de régression logistique pour prédire si un utilisateur cliquera sur une publicité en fonction de ses caractéristiques. \n\n#### Notre modèle a atteint une précision > 90%, ce qui est excellent pour ce type de problème.\n\n#### Cette analyse peut aider les entreprises à optimiser leurs campagnes publicitaires en ciblant les utilisateurs les plus susceptibles de cliquer sur leurs annonces, \naméliorant ainsi le retour sur investissement de leurs efforts marketing.\n\n#### Pour améliorer davantage ce modèle, nous pourrions:\n\n- Explorer d'autres algorithmes de classification\n\n- Effectuer une sélection de caractéristiques plus approfondie\n\n- Ajuster les hyperparamètres du modèle\n\n- Collecter plus de données pour l'entraînement\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:42:42+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745772064329_1293749521",
+      "id": "paragraph_1745772064329_1293749521",
+      "dateCreated": "2025-04-27T16:41:04+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:11027",
+      "dateFinished": "2025-04-27T16:42:42+0000",
+      "dateStarted": "2025-04-27T16:42:42+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Conclusion</h2>\n<h3>Dans ce notebook, nous avons développé un modèle de régression logistique pour prédire si un utilisateur cliquera sur une publicité en fonction de ses caractéristiques.</h3>\n<h4>Notre modèle a atteint une précision &gt; 90%, ce qui est excellent pour ce type de problème.</h4>\n<h4>Cette analyse peut aider les entreprises à optimiser leurs campagnes publicitaires en ciblant les utilisateurs les plus susceptibles de cliquer sur leurs annonces,</h4>\n<p>améliorant ainsi le retour sur investissement de leurs efforts marketing.</p>\n<h4>Pour améliorer davantage ce modèle, nous pourrions:</h4>\n<ul>\n<li>\n<p>Explorer d&rsquo;autres algorithmes de classification</p>\n</li>\n<li>\n<p>Effectuer une sélection de caractéristiques plus approfondie</p>\n</li>\n<li>\n<p>Ajuster les hyperparamètres du modèle</p>\n</li>\n<li>\n<p>Collecter plus de données pour l&rsquo;entraînement</p>\n</li>\n</ul>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2025-04-27T16:42:14+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1745772134144_1544283805",
+      "id": "paragraph_1745772134144_1544283805",
+      "dateCreated": "2025-04-27T16:42:14+0000",
+      "status": "READY",
+      "focus": true,
+      "$$hashKey": "object:11401"
+    }
+  ],
+  "name": "Prédiction de Clics sur des Publicités: Analyse de Données et Régression Logistique",
+  "id": "2KUJ4BVJG",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Prédiction de Clics sur des Publicités: Analyse de Données et Régression Logistique"
+}
